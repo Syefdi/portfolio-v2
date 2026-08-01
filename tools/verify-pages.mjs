@@ -456,6 +456,27 @@ async function verifyDesktop(browser, baseUrl) {
   const pipelineSteps = await page.locator('#built .pipeline-step').count();
   check('pipeline documents three stages', pipelineSteps === 3, `${pipelineSteps} steps`);
 
+  // The record reads as three blocks now: work, study, credentials. Without the
+  // study dates the timeline looked like someone walked straight into a QA post.
+  const recordLabels = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('#instruments .plate-label')).map((node) =>
+      node.textContent.trim(),
+    ),
+  );
+  check(
+    'record is split into work, study and credentials',
+    ['Work', 'Study', 'Credentials'].every((label) => recordLabels.includes(label)),
+    recordLabels.join(', '),
+  );
+  check(
+    'the role progression shows three stages',
+    (await page.locator('#instruments .grid.gap-px > span').count()) === 3,
+  );
+  check(
+    'the actual job title is on the page',
+    (await page.locator('#instruments').innerText()).includes('Junior QA Tester'),
+  );
+
   // A project without a published repository must not carry a dead link.
   const emptyLinks = await page.evaluate(
     () =>

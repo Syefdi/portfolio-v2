@@ -1,6 +1,6 @@
 # portfolio-v2
 
-QA engineer portfolio. The hero is not a headline, it is the test run: 400 cells,
+QA portfolio. The hero is not a headline, it is the test run: 400 cells,
 one per test item from the ERM V3 release. 332 passed in hi-vis, 21 failed in red.
 The argument the whole site makes is legible before you read a word.
 

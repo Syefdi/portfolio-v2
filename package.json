@@ -2,7 +2,7 @@
   "name": "portfolio-v2",
   "version": "2.0.0",
   "private": true,
-  "description": "QA engineer portfolio. The hero is the test run itself: 400 cells, one per test item, generated at build time from the published metrics.",
+  "description": "QA portfolio. The hero is the test run itself: 400 cells, one per test item, generated at build time from the published metrics.",
   "scripts": {
     "build": "npm run build:field && npm run build:icons && npm run build:css",
     "build:css": "tailwindcss --input ./src/input.css --output ./assets/css/style.css --minify",
