@@ -1,65 +1,40 @@
 # Dependencies
 node_modules/
-package-lock.json
 
-# Editor directories and files
+# Build outputs that are NOT committed.
+# Note: assets/css/style.css, assets/icons/sprite.svg and the generated tally field
+# in index.html ARE committed on purpose, so GitHub Pages needs no build step.
+
+# Editor
 .vscode/*
-!.vscode/extensions.json
 !.vscode/settings.json
 .idea/
 *.swp
 *.swo
-*~
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 Desktop.ini
 
-# Backup files
-*.backup
-*.bak
-*.old
-*~
-.backups/
-
-# Temporary files
+# Temporary and backup
 *.tmp
 *.temp
+*.bak
+*.old
+*.log
 .cache/
 
-# Logs
-logs/
-*.log
-npm-debug.log*
-
-# Build outputs (if you add build step later)
-dist/
-build/
-*.min.js
-*.min.css
-
-# Testing
-.playwright/
+# Playwright artefacts
 test-results/
 playwright-report/
 playwright/.cache/
 
-# Environment variables (if you add later)
+# Environment
 .env
 .env.local
 .env.*.local
 
-# Impeccable working files (optional - remove if you want to track critiques)
-.impeccable/critique/*.md
-
-# Verification output
-.verify-output.txt
-.detect.json
-.critique-body.md
-.persist.txt
+# The walkthrough recording is 35 MB. Excluded until it is compressed; nothing on
+# the site links to it, so there are no broken references.
 assets/videos/
-.run.txt
-.run2.txt
-.frames.txt
-.gitlog.txt
