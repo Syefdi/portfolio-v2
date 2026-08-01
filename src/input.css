@@ -147,6 +147,70 @@
     will-change: transform;
   }
 
+  /* --- Revision archive -------------------------------------------------- */
+
+  /* This portfolio has been rebuilt once and both builds are still published, so
+     the switcher is a revision history rather than a generic link. It reads as a
+     stamped tab: current revision filled, the rest behind it. */
+  .archive-trigger {
+    @apply fixed bottom-5 right-5 z-masthead flex items-stretch border border-ground-rule bg-ground/90 transition-colors;
+    backdrop-filter: blur(8px);
+  }
+
+  .archive-trigger:hover,
+  .archive-trigger:focus-visible {
+    @apply border-hivis;
+  }
+
+  .archive-trigger-rev {
+    @apply flex items-center bg-hivis px-2.5 py-2 text-label uppercase tracking-[0.07em] text-ground;
+  }
+
+  .archive-trigger-label {
+    @apply flex items-center gap-2 px-3 py-2 text-label uppercase tracking-[0.07em] text-on-ground-muted transition-colors;
+  }
+
+  .archive-trigger:hover .archive-trigger-label,
+  .archive-trigger:focus-visible .archive-trigger-label {
+    @apply text-on-ground;
+  }
+
+  /* Each revision is a record with evidence attached, which here means an actual
+     screenshot of that build rather than a description of it. */
+  .rev-entry {
+    @apply grid gap-x-6 gap-y-4 border-b border-plate-rule px-6 py-6 sm:px-8;
+  }
+
+  @media (min-width: 640px) {
+    .rev-entry {
+      grid-template-columns: 15rem minmax(0, 1fr);
+    }
+  }
+
+  .rev-entry:last-child {
+    @apply border-b-0;
+  }
+
+  .rev-shot {
+    @apply block w-full border border-plate-rule bg-plate-sunken;
+  }
+
+  .rev-shot-link {
+    @apply block transition-opacity;
+  }
+
+  .rev-shot-link:hover {
+    @apply opacity-80;
+  }
+
+  .rev-status-current {
+    @apply inline-block bg-ink px-2 py-0.5 text-label uppercase tracking-[0.07em] text-plate;
+  }
+
+  .rev-status-past {
+    @apply inline-block border border-plate-rule px-2 py-0.5 text-label uppercase tracking-[0.07em] text-ink-muted;
+  }
+
   /* --- Tally field ------------------------------------------------------ */
 
   /* The hero. 400 cells, one per test item, coloured by outcome. Verified is the
@@ -159,20 +223,27 @@
     transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* Passing is the quiet mass. It is the expected outcome, and 332 cells of
+     full-strength accent drowned the 21 that actually matter. */
   .cell-pass {
-    fill: #d7f733;
+    fill: #a8c220;
   }
 
+  /* The defects are the subject of the whole page, so they stay at full
+     strength and carry a ring to separate them from their neighbours. */
   .cell-fail {
     fill: #ff3b30;
+    stroke: #ffb3ae;
+    stroke-width: 1.5;
+    paint-order: stroke;
   }
 
   .cell-pending {
-    fill: #8a8a92;
+    fill: #55555c;
   }
 
   .cell-absent {
-    fill: #2a2a2f;
+    fill: #23232a;
   }
 
   /* Isolating an outcome dims the rest instead of hiding it, so the proportion

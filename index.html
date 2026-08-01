@@ -86,14 +86,17 @@
                 <span class="hidden label text-on-ground-muted sm:inline">QA Tester</span>
             </a>
 
-            <nav aria-label="Contents" class="hidden items-center gap-7 lg:flex">
-                <a class="masthead-link" data-section-link href="#findings">Findings</a>
-                <a class="masthead-link" data-section-link href="#method">Method</a>
-                <a class="masthead-link" data-section-link href="#systems">Systems</a>
-                <a class="masthead-link" data-section-link href="#built">Built</a>
-                <a class="masthead-link" data-section-link href="#instruments">Instruments</a>
-                <a class="masthead-link" data-section-link href="#sign-off">Contact</a>
-            </nav>
+            <div class="hidden items-center gap-8 lg:flex">
+                <nav aria-label="Contents" class="flex items-center gap-7">
+                    <a class="masthead-link" data-section-link href="#findings">Findings</a>
+                    <a class="masthead-link" data-section-link href="#method">Method</a>
+                    <a class="masthead-link" data-section-link href="#systems">Systems</a>
+                    <a class="masthead-link" data-section-link href="#built">Built</a>
+                    <a class="masthead-link" data-section-link href="#instruments">Instruments</a>
+                    <a class="masthead-link" data-section-link href="#sign-off">Contact</a>
+                </nav>
+
+            </div>
 
             <button aria-controls="contents-overlay" aria-expanded="false" class="flex items-center gap-2 border border-ground-rule px-3 py-1.5 label transition-colors hover:border-hivis hover:text-hivis lg:hidden" id="contents-toggle" type="button">
                 <svg class="h-3 w-3 fill-current" aria-hidden="true" focusable="false"><use href="#icon-format-list-bulleted"/></svg>
@@ -145,6 +148,11 @@
 
             <div class="lg:col-span-5">
                 <figure class="tally-wrap" data-enter="rise" id="tally" style="--enter-delay: 260ms">
+                    <p class="mb-4 max-w-measure-tight text-sm text-on-ground">
+                        Every square below is one test item.
+                        <span class="text-fail">The red ones are the defects I found.</span>
+                    </p>
+
                     <!-- tally-field:start -->
 <svg class="tally-field" viewBox="0 0 200 200" role="img" aria-labelledby="tally-title tally-desc" preserveAspectRatio="xMidYMid meet">
   <title id="tally-title">Test execution tally for ERM V3</title>
@@ -183,7 +191,7 @@
 
                         <div aria-label="Isolate an outcome in the tally" class="mt-4" id="tally-legend" role="group">
                             <button aria-pressed="false" class="legend-item" data-outcome="pass" type="button">
-                                <span class="legend-swatch bg-hivis"></span>
+                                <span class="legend-swatch bg-hivis-dim"></span>
                                 <span class="legend-count text-hivis">332</span>
                                 <span class="flex-1 label text-on-ground-muted">Passed<span class="ml-2">83.0%</span></span>
                             </button>
@@ -194,7 +202,7 @@
                             </button>
                             <button aria-pressed="false" class="legend-item" data-outcome="pending" type="button">
                                 <span class="legend-swatch bg-pending"></span>
-                                <span class="legend-count text-pending">36</span>
+                                <span class="legend-count text-on-ground-muted">36</span>
                                 <span class="flex-1 label text-on-ground-muted">In progress<span class="ml-2">9.0%</span></span>
                             </button>
                             <button aria-pressed="false" class="legend-item" data-outcome="absent" type="button">
@@ -864,7 +872,29 @@
                 </div>
             </div>
 
-            <footer class="mt-16 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-ground/25 pt-6">
+            <div class="mt-16 border-t border-ground/25 pt-8">
+                <p class="text-label uppercase tracking-[0.07em] text-hivis-ink">Revisions</p>
+                <div class="mt-4 grid gap-px bg-ground/20 sm:grid-cols-2">
+                    <div class="bg-hivis py-5 pr-6">
+                        <p class="font-display text-2xl uppercase leading-none">Rev 02, this one</p>
+                        <p class="mt-2 max-w-measure-tight text-sm">
+                            The test run as the landing image, and the defect log on the front page
+                            rather than behind a link.
+                        </p>
+                    </div>
+                    <a class="group bg-hivis py-5 pl-0 transition-opacity hover:opacity-70 sm:pl-6" href="https://syefdi.github.io/">
+                        <p class="flex items-center gap-3 font-display text-2xl uppercase leading-none">
+                            Rev 01
+                            <svg class="h-4 w-4 shrink-0 fill-current transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </p>
+                        <p class="mt-2 max-w-measure-tight text-sm">
+                            The first build. Still online, still honest about where it came from.
+                        </p>
+                    </a>
+                </div>
+            </div>
+
+            <footer class="mt-12 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-ground/25 pt-6">
                 <p class="text-label uppercase tracking-[0.07em] text-hivis-ink">Designed and built by Syefdi Fasmawi Syaban</p>
                 <p class="text-label uppercase tracking-[0.07em] text-hivis-ink">
                     <time datetime="2026" id="footer-year">2026</time> / no tracking, no analytics
@@ -890,9 +920,87 @@
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#systems">Systems</a></li>
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#built">Built</a></li>
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#instruments">Instruments</a></li>
-                <li><a class="block px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#sign-off">Contact</a></li>
+                <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#sign-off">Contact</a></li>
             </ul>
+
+            <div class="border-t-2 border-ink px-5 py-4">
+                <p class="plate-label">Other revision</p>
+                <a class="mt-2 inline-flex items-baseline gap-2 font-display text-xl uppercase leading-none text-ink transition-colors hover:text-hivis-ink" href="https://syefdi.github.io/">
+                    Rev 01
+                    <svg class="h-3 w-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                </a>
+                <p class="mt-1.5 text-sm text-ink-muted">The first build, still online</p>
+            </div>
         </nav>
+    </div>
+</dialog>
+
+<!-- Revision archive trigger, always reachable -->
+<button aria-controls="archive-overlay" aria-expanded="false" aria-haspopup="dialog" class="archive-trigger" id="archive-toggle" type="button">
+    <span class="archive-trigger-rev">Rev 02</span>
+    <span class="archive-trigger-label">
+        Revisions
+        <svg class="h-2.5 w-2.5 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+    </span>
+</button>
+
+<!-- Revision archive -->
+<dialog aria-labelledby="archive-title" class="overlay" id="archive-overlay">
+    <div class="flex min-h-full items-center justify-center p-4">
+        <div class="overlay-sheet relative max-h-[88vh] w-full max-w-3xl translate-y-2 overflow-y-auto opacity-0 transition duration-200" id="archive-panel">
+            <button class="absolute right-4 top-4 z-overlay-content text-ink-muted transition-colors hover:text-ink" data-overlay-dismiss type="button" aria-label="Close revision history">
+                <svg class="h-4 w-4 fill-current" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg>
+            </button>
+
+            <div class="border-b-2 border-ink px-6 py-6 pr-14 sm:px-8">
+                <p class="plate-label">Revision history</p>
+                <h2 class="mt-2 font-display text-loud uppercase text-ink" id="archive-title">Two builds, both online</h2>
+                <p class="mt-3 max-w-measure text-sm text-ink-secondary">
+                    This portfolio has been rebuilt once. The earlier build stays published rather
+                    than being quietly replaced, because a record that deletes its own history is not
+                    much of a record. Screenshots below are of the live sites.
+                </p>
+            </div>
+
+            <ol class="list-none p-0">
+                <li class="rev-entry">
+                    <img alt="Screenshot of revision 02, the current build" class="rev-shot" decoding="async" height="750" loading="lazy" src="assets/images/rev-02.jpg" width="1200"/>
+                    <div>
+                        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                            <p class="font-display text-2xl uppercase leading-none text-ink">Rev 02</p>
+                            <p class="rev-status-current">You are here</p>
+                        </div>
+                        <p class="mt-3 font-semibold text-ink">The tally build</p>
+                        <p class="mt-2 max-w-measure text-sm text-ink-secondary">
+                            The test run became the landing image, 400 cells generated from the
+                            metrics sheet. The defect log moved onto the front page instead of sitting
+                            behind a link, and the record gained the route in through IT support.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="rev-entry">
+                    <a class="rev-shot-link" href="https://syefdi.github.io/">
+                        <img alt="Screenshot of revision 01, the first build" class="rev-shot" decoding="async" height="750" loading="lazy" src="assets/images/rev-01.jpg" width="1200"/>
+                    </a>
+                    <div>
+                        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                            <p class="font-display text-2xl uppercase leading-none text-ink">Rev 01</p>
+                            <p class="rev-status-past">Superseded</p>
+                        </div>
+                        <p class="mt-3 font-semibold text-ink">The first build</p>
+                        <p class="mt-2 max-w-measure text-sm text-ink-secondary">
+                            Sticky sidebar, dark navy, three headline figures above the artefacts. It
+                            worked, it just described the work instead of showing it.
+                        </p>
+                        <a class="mt-4 inline-flex items-center gap-2 border-b-2 border-hivis pb-0.5 text-label uppercase tracking-[0.07em] text-ink transition-colors hover:bg-hivis" href="https://syefdi.github.io/">
+                            Visit Rev 01
+                            <svg class="h-2.5 w-2.5 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </a>
+                    </div>
+                </li>
+            </ol>
+        </div>
     </div>
 </dialog>
 

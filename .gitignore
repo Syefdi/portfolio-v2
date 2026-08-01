@@ -38,3 +38,8 @@ playwright/.cache/
 # The walkthrough recording is 35 MB. Excluded until it is compressed; nothing on
 # the site links to it, so there are no broken references.
 assets/videos/
+.check-v1.mjs
+.shots.mjs
+.shots.log
+.verify-v2.log
+.check-v1.log

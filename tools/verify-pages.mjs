@@ -477,6 +477,36 @@ async function verifyDesktop(browser, baseUrl) {
     (await page.locator('#instruments').innerText()).includes('Junior QA Tester'),
   );
 
+  // Revision archive: the trigger has to be reachable, the overlay has to show
+  // both builds, and the screenshots have to actually load rather than sitting
+  // there as broken images.
+  check('revision trigger is visible', await page.locator('#archive-toggle').isVisible());
+  await page.locator('#archive-toggle').click();
+  await page.locator('#archive-overlay').waitFor({ state: 'visible' });
+  check('archive opens as a modal', await page.evaluate(() => document.getElementById('archive-overlay').open));
+  check(
+    'archive is labelled by its heading',
+    (await page.locator('#archive-overlay').getAttribute('aria-labelledby')) === 'archive-title',
+  );
+  const revEntries = await page.locator('#archive-overlay .rev-entry').count();
+  check('archive lists both revisions', revEntries === 2, `${revEntries} entries`);
+  const shotsLoaded = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('#archive-overlay .rev-shot')).every(
+      (image) => image.complete && image.naturalWidth > 0,
+    ),
+  );
+  check('revision screenshots loaded', shotsLoaded);
+  check(
+    'archive links to the other build',
+    (await page.locator('#archive-overlay a[href="https://syefdi.github.io/"]').count()) >= 1,
+  );
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(320);
+  check(
+    'Escape closes the archive',
+    (await page.evaluate(() => document.getElementById('archive-overlay').open)) === false,
+  );
+
   // A project without a published repository must not carry a dead link.
   const emptyLinks = await page.evaluate(
     () =>

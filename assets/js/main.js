@@ -63,27 +63,43 @@
     return element;
   }
 
-  /** Runs a callback the first time an element scrolls into view. */
-  function onFirstIntersection(element, callback, options) {
-    if (!element) {
+  /**
+   * Calls back once for each element as scrolling reaches it.
+   *
+   * This sweeps positions rather than using IntersectionObserver. An observer
+   * samples, so an element scrolled past between two samples can be missed and
+   * never fire, which for a reveal means content that stays invisible for good.
+   * A sweep is monotonic: reached once, fired once, then dropped. The listener
+   * detaches when nothing is left pending.
+   */
+  function whenReached(elements, onReach) {
+    var pending = elements.slice();
+
+    if (pending.length === 0) {
       return;
     }
 
-    if (!('IntersectionObserver' in window)) {
-      callback();
-      return;
-    }
+    var sweep = rafThrottle(function () {
+      var limit = window.innerHeight - 40;
 
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          callback();
-          observer.disconnect();
+      pending = pending.filter(function (element) {
+        if (element.getBoundingClientRect().top > limit) {
+          return true;
         }
-      });
-    }, options || { threshold: 0.15 });
 
-    observer.observe(element);
+        onReach(element);
+        return false;
+      });
+
+      if (pending.length === 0) {
+        window.removeEventListener('scroll', sweep);
+        window.removeEventListener('resize', sweep);
+      }
+    });
+
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep, { passive: true });
+    sweep();
   }
 
   /* ======================================================================
@@ -101,45 +117,22 @@
    * list is empty.
    */
   function initEntrances() {
-    var pending = selectAll('[data-enter]');
+    var targets = selectAll('[data-enter]');
 
-    if (pending.length === 0) {
+    if (targets.length === 0) {
       return;
-    }
-
-    function revealAll() {
-      pending.forEach(function (target) {
-        target.classList.add('is-entered');
-      });
-      pending = [];
     }
 
     if (prefersReducedMotion()) {
-      revealAll();
+      targets.forEach(function (target) {
+        target.classList.add('is-entered');
+      });
       return;
     }
 
-    var sweep = rafThrottle(function () {
-      var limit = window.innerHeight - 40;
-
-      pending = pending.filter(function (target) {
-        if (target.getBoundingClientRect().top > limit) {
-          return true;
-        }
-
-        target.classList.add('is-entered');
-        return false;
-      });
-
-      if (pending.length === 0) {
-        window.removeEventListener('scroll', sweep);
-        window.removeEventListener('resize', sweep);
-      }
+    whenReached(targets, function (target) {
+      target.classList.add('is-entered');
     });
-
-    window.addEventListener('scroll', sweep, { passive: true });
-    window.addEventListener('resize', sweep, { passive: true });
-    sweep();
   }
 
   /* ======================================================================
@@ -165,13 +158,9 @@
     if (prefersReducedMotion()) {
       wrap.classList.add('is-printed');
     } else {
-      onFirstIntersection(
-        wrap,
-        function () {
-          wrap.classList.add('is-printed');
-        },
-        { threshold: 0.1 },
-      );
+      whenReached([wrap], function () {
+        wrap.classList.add('is-printed');
+      });
     }
 
     var legend = select('#tally-legend');
@@ -237,7 +226,7 @@
       return;
     }
 
-    onFirstIntersection(bars[0].closest('div[role="table"]') || bars[0], draw, { threshold: 0.2 });
+    whenReached([bars[0].closest('div[role="table"]') || bars[0]], draw);
   }
 
   /* ======================================================================
@@ -500,6 +489,48 @@
   }
 
   /* ======================================================================
+     Revision archive
+     ====================================================================== */
+
+  function initArchiveOverlay() {
+    var toggle = select('#archive-toggle');
+    var dialog = select('#archive-overlay');
+    var panel = select('#archive-panel');
+
+    if (!toggle || !dialog || !panel) {
+      return;
+    }
+
+    // Without dialog support the trigger cannot open anything, so it becomes a
+    // plain link to the other revision instead of a button that does nothing.
+    if (!supportsModal(dialog)) {
+      var fallback = document.createElement('a');
+      fallback.className = toggle.className;
+      fallback.href = 'https://syefdi.github.io/';
+      fallback.replaceChildren.apply(fallback, toggle.childNodes);
+      toggle.replaceWith(fallback);
+      return;
+    }
+
+    var overlay = wireOverlay(dialog, panel, {
+      onOpen: function () {
+        toggle.setAttribute('aria-expanded', 'true');
+      },
+      onClose: function () {
+        toggle.setAttribute('aria-expanded', 'false');
+      },
+    });
+
+    toggle.addEventListener('click', function () {
+      if (dialog.open) {
+        overlay.close();
+      } else {
+        overlay.open();
+      }
+    });
+  }
+
+  /* ======================================================================
      System detail
      ====================================================================== */
 
@@ -677,6 +708,7 @@
     initSectionTracking();
     initSeverityFilter();
     initContentsOverlay();
+    initArchiveOverlay();
     initSystemOverlay();
     initFooterYear();
   }
