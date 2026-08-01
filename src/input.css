@@ -401,6 +401,38 @@
     @apply text-on-ground;
   }
 
+  /* --- Built ------------------------------------------------------------ */
+
+  /* Two entries, so a ruled two-column split rather than a pair of cards. */
+  .built-item {
+    @apply grid gap-x-12 gap-y-7 border-t border-ground-rule py-10;
+  }
+
+  @media (min-width: 900px) {
+    .built-item {
+      grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+    }
+  }
+
+  .chip {
+    @apply inline-block border border-ground-rule px-2.5 py-1 text-label uppercase tracking-[0.07em] text-on-ground-muted;
+  }
+
+  /* Numbered because this genuinely is a three-stage pipeline and the order is
+     the information. Hairline dividers come from the gap showing the rule
+     colour behind the cells. */
+  .pipeline {
+    @apply mt-7 grid gap-px bg-ground-rule sm:grid-cols-3;
+  }
+
+  .pipeline-step {
+    @apply bg-ground p-4;
+  }
+
+  .pipeline-index {
+    @apply font-display text-2xl leading-none text-hivis;
+  }
+
   /* --- Ledger ----------------------------------------------------------- */
 
   .ledger > * {

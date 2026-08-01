@@ -448,6 +448,24 @@ async function verifyDesktop(browser, baseUrl) {
   await page.waitForTimeout(300);
   check('hash navigation keeps the fragment', page.url().endsWith('#instruments'), page.url());
 
+  // Built section: two projects, and the pipeline is a genuine three-stage
+  // sequence rather than decorative numbering.
+  check('built section present', (await page.locator('#built').count()) === 1);
+  const builtCount = await page.locator('#built .built-item').count();
+  check('built section lists both projects', builtCount === 2, `${builtCount} entries`);
+  const pipelineSteps = await page.locator('#built .pipeline-step').count();
+  check('pipeline documents three stages', pipelineSteps === 3, `${pipelineSteps} steps`);
+
+  // A project without a published repository must not carry a dead link.
+  const emptyLinks = await page.evaluate(
+    () =>
+      Array.from(document.querySelectorAll('a')).filter((link) => {
+        const href = link.getAttribute('href');
+        return !href || href === '#' || href.trim() === '';
+      }).length,
+  );
+  check('no placeholder or empty links', emptyLinks === 0, `${emptyLinks} found`);
+
   const contrastFailures = await page.evaluate(auditContrast);
   check('all visible text meets WCAG AA contrast', contrastFailures.length === 0, contrastFailures.join(' | '));
 

@@ -44,7 +44,8 @@ of treatment.
 - **Tracked uppercase eyebrows above every section**, and numbered section
   markers.
 - **Identical card grids.** The artefact index is a four-up grid of hi-vis hover
-  panels, and it is the only grid of its kind on the page.
+  panels, and it is the only grid of its kind on the page. The two projects in
+  Built are a ruled two-column split, not a pair of cards.
 
 ## Colour
 
@@ -111,6 +112,7 @@ hi-vis   availability strip
 ground   findings heading, with white plates inside it
 ground   method
 ground   systems, artefact index
+ground   built
 ground   instruments heading, with a white plate inside it
 hi-vis   sign-off
 ```
@@ -146,3 +148,12 @@ collapses to an instant render under `prefers-reduced-motion`.
 - **Overlays** are native `<dialog>`. Focus trapping, Escape, focus restoration
   and background inertness come from the platform.
 - Controls that cannot work disable themselves rather than sitting there dead.
+
+## Numbering, and when it is allowed
+
+Numbered markers as section scaffolding are banned here, which is why the
+navigation and the section headings carry none. The one exception is the DropIt
+pipeline, where the three stages are a real sequence and the order is the
+information: analyse, then resolve a strategy from what was found, then encode.
+Verification asserts there are exactly three stages, so the numbering cannot drift
+into decoration.

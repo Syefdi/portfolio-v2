@@ -26,6 +26,9 @@ audit it.
   the table survives a greyscale print and colour vision deficiency.
 - **Nothing invented.** Only one defect has a real reference number, so only one
   shows a reference. Where the data does not exist, the column does not exist.
+- **Two built projects, one of them unpublished.** DropIt has no repository yet,
+  so it carries a "Source not yet published" tag instead of a dead link.
+  Verification fails the build if any link on the page is empty or a bare `#`.
 - **Contrast is verified, not asserted.** The check walks every element with
   visible text, resolves the real background behind it including transparent and
   opacity-dimmed layers, and fails the build under WCAG AA.
@@ -72,7 +75,7 @@ icons, or the tally counts.
 ```bash
 npm install
 npm run build      # tally field, icon sprite, stylesheet
-npm run verify     # 82 headless checks in Firefox
+npm run verify     # 86 headless checks in Firefox
 python3 -m http.server 8080
 ```
 
@@ -128,7 +131,7 @@ runtime, and there is no icon web font.
 ## Verification
 
 `npm run verify` starts a throwaway static server and drives every page in
-headless Firefox. 82 checks:
+headless Firefox. 86 checks:
 
 - no console errors and no failed requests on any page
 - both font families resolving, compiled stylesheet applied
@@ -137,6 +140,8 @@ headless Firefox. 82 checks:
 - every `#icon-` reference resolving to a symbol that exists
 - the portrait actually loading, not merely referenced in meta tags
 - severity filter narrowing the log, announcing state, responding to number keys
+- the Built section listing both projects, its pipeline documenting three stages,
+  and no empty or placeholder links anywhere on the page
 - dialogs opening as modals, labelled, scroll-locked, closing on Escape, clearing
 - **every visible text element meeting WCAG AA for its size and weight**
 - no horizontal overflow at 1440px, 1280px or 390px

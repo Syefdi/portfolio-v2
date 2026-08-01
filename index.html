@@ -90,6 +90,7 @@
                 <a class="masthead-link" data-section-link href="#findings">Findings</a>
                 <a class="masthead-link" data-section-link href="#method">Method</a>
                 <a class="masthead-link" data-section-link href="#systems">Systems</a>
+                <a class="masthead-link" data-section-link href="#built">Built</a>
                 <a class="masthead-link" data-section-link href="#instruments">Instruments</a>
                 <a class="masthead-link" data-section-link href="#sign-off">Contact</a>
             </nav>
@@ -506,6 +507,106 @@
 </section>
 
 <!-- ===================================================================
+     Built. Two things made rather than tested.
+     =================================================================== -->
+<section aria-labelledby="built-title" class="zone pt-zone" id="built">
+    <div class="zone-inner">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <h2 class="font-display text-huge uppercase" id="built-title">Built</h2>
+            <p class="label text-on-ground-muted">Two things I made rather than tested</p>
+        </div>
+
+        <div class="mt-8">
+
+            <article class="built-item" data-enter="slide">
+                <div>
+                    <h3 class="font-display text-loud uppercase text-hivis">DropIt</h3>
+                    <p class="mt-2 text-sm text-on-ground-muted">Automatic video optimisation for the web</p>
+                    <p class="mt-4"><span class="chip">Source not yet published</span></p>
+                    <ul class="mt-5 flex list-none flex-wrap gap-2 p-0">
+                        <li class="chip">Laravel 13</li>
+                        <li class="chip">PHP 8.3</li>
+                        <li class="chip">Angular 18</li>
+                        <li class="chip">MySQL 8</li>
+                        <li class="chip">FFmpeg</li>
+                        <li class="chip">SSE</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="max-w-measure text-lead text-on-ground">
+                        Upload a video, get a smaller file back with no visible quality loss.
+                    </p>
+                    <p class="mt-5 max-w-measure text-on-ground-muted">
+                        Encoding is slow, so nothing happens in the request. The upload dispatches a
+                        queued job and the browser follows along over server-sent events. The part I
+                        care about most is the decision in the middle: the resolver reads what the
+                        file actually is before choosing how to treat it, and when a file is already
+                        well encoded it skips the work rather than re-encoding it for nothing.
+                    </p>
+
+                    <div class="pipeline">
+                        <div class="pipeline-step">
+                            <p class="pipeline-index">01</p>
+                            <p class="mt-3 font-semibold text-on-ground">Analyse</p>
+                            <p class="mt-1.5 text-sm text-on-ground-muted">FFprobe reads codec, resolution, bitrate, duration and audio track.</p>
+                        </div>
+                        <div class="pipeline-step">
+                            <p class="pipeline-index">02</p>
+                            <p class="mt-3 font-semibold text-on-ground">Resolve</p>
+                            <p class="mt-1.5 text-sm text-on-ground-muted">Strategy picks codec, CRF, preset and a bitrate cap from that metadata. H.264 below 4K, H.265 above. Already optimised means skip.</p>
+                        </div>
+                        <div class="pipeline-step">
+                            <p class="pipeline-index">03</p>
+                            <p class="mt-3 font-semibold text-on-ground">Encode</p>
+                            <p class="mt-1.5 text-sm text-on-ground-muted">FFmpeg re-encodes, progress streams to the browser, result shows original against optimised size.</p>
+                        </div>
+                    </div>
+
+                    <p class="mt-6 max-w-measure text-sm text-on-ground-muted">
+                        Laid out in layers so the encoding logic never touches HTTP: use cases and
+                        DTOs in the application layer, entities and value objects in the domain,
+                        FFmpeg and the queue behind interfaces in infrastructure. Controllers stay
+                        thin enough to be uninteresting, which is the point.
+                    </p>
+                </div>
+            </article>
+
+            <article class="built-item" data-enter="slide" style="--enter-delay: 80ms">
+                <div>
+                    <h3 class="font-display text-loud uppercase">
+                        <a class="group inline-flex items-baseline gap-3 transition-colors hover:text-hivis" href="https://github.com/Syefdi/bugReport" rel="noopener noreferrer" target="_blank">
+                            Defect tracker
+                            <svg class="h-4 w-4 shrink-0 fill-current transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                            <span class="sr-only">on GitHub, opens in a new tab</span>
+                        </a>
+                    </h3>
+                    <p class="mt-2 text-sm text-on-ground-muted">The reporting tool I wanted while filing reports</p>
+                    <ul class="mt-5 flex list-none flex-wrap gap-2 p-0">
+                        <li class="chip">FastAPI</li>
+                        <li class="chip">Python</li>
+                        <li class="chip">PostgreSQL</li>
+                        <li class="chip">JavaScript</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="max-w-measure text-lead text-on-ground">
+                        A defect tracker built by the person filing the defects.
+                    </p>
+                    <p class="mt-5 max-w-measure text-on-ground-muted">
+                        Role separation for tester and developer, file attachments on a report, and
+                        an audit trail on every state change, because the question that actually
+                        gets asked is not what the status is but when it changed and who changed it.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================================
      Instruments and record, on a plate
      =================================================================== -->
 <section aria-labelledby="instruments-title" class="zone pt-zone" id="instruments">
@@ -575,33 +676,6 @@
                             <dd class="text-sm text-ink-secondary">Reading the data a screen claims to show</dd>
                         </div>
                     </dl>
-                </div>
-            </div>
-
-            <!-- Built rather than tested -->
-            <div class="mt-14 border-t-2 border-ink pt-8">
-                <p class="plate-label">Built, not tested</p>
-                <div class="mt-4 grid gap-x-10 gap-y-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
-                    <div>
-                        <h3 class="font-display text-loud uppercase text-ink">
-                            <a class="group inline-flex items-center gap-3 transition-colors hover:text-hivis-ink" href="https://github.com/Syefdi/bugReport" rel="noopener noreferrer" target="_blank">
-                                Defect tracking system
-                                <svg class="h-5 w-5 fill-current transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
-                                <span class="sr-only">on GitHub, opens in a new tab</span>
-                            </a>
-                        </h3>
-                        <p class="mt-3 max-w-measure text-sm text-ink-secondary">
-                            After filing enough reports by hand I built the tool I wanted: role
-                            separation for tester and developer, file attachments, and an audit trail
-                            on every state change.
-                        </p>
-                    </div>
-                    <ul class="flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
-                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">FastAPI</li>
-                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">Python</li>
-                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">PostgreSQL</li>
-                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">JavaScript</li>
-                    </ul>
                 </div>
             </div>
 
@@ -764,6 +838,7 @@
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#findings">Findings</a></li>
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#method">Method</a></li>
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#systems">Systems</a></li>
+                <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#built">Built</a></li>
                 <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#instruments">Instruments</a></li>
                 <li><a class="block px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#sign-off">Contact</a></li>
             </ul>
