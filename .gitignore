@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Backup files
+*.backup
+*.bak
+*.old
+*~
+.backups/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build outputs (if you add build step later)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Testing
+.playwright/
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Environment variables (if you add later)
+.env
+.env.local
+.env.*.local
+
+# Impeccable working files (optional - remove if you want to track critiques)
+.impeccable/critique/*.md
+
+# Verification output
+.verify-output.txt
+.detect.json
+.critique-body.md
+.persist.txt
+assets/videos/
+.run.txt
+.run2.txt
+.frames.txt
+.gitlog.txt

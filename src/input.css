@@ -1,0 +1,599 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ground font-sans text-on-ground antialiased;
+  }
+
+  /* Artefact pages are a printed document, not a poster. */
+  body.doc-page {
+    @apply bg-sheet text-ink;
+  }
+
+  :target {
+    scroll-margin-top: 4.5rem;
+  }
+
+  :focus-visible {
+    outline: 3px solid #d7f733;
+    outline-offset: 2px;
+  }
+
+  .doc-page :focus-visible {
+    outline-color: #b8330f;
+  }
+
+  ::selection {
+    background-color: #d7f733;
+    color: #0d0d0f;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+@layer components {
+  /* --- Shared furniture ------------------------------------------------- */
+
+  .skip-link {
+    position: absolute;
+    left: 0;
+    top: -100%;
+    z-index: 40;
+    padding: 0.75rem 1.25rem;
+    background-color: #d7f733;
+    color: #0d0d0f;
+    font-weight: 700;
+    transition: top 0.18s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  .zone {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+
+  .zone-inner {
+    @apply mx-auto w-full max-w-[92rem];
+  }
+
+  /* A label, set in the text face rather than a monospace costume. */
+  .label {
+    @apply text-label uppercase tracking-[0.07em];
+  }
+
+  /* --- Masthead --------------------------------------------------------- */
+
+  .masthead {
+    @apply sticky top-0 z-masthead border-b border-ground-rule bg-ground/90;
+    backdrop-filter: blur(8px);
+  }
+
+  .masthead-link {
+    @apply relative py-1 text-label uppercase tracking-[0.07em] text-on-ground-muted transition-colors;
+  }
+
+  .masthead-link:hover,
+  .masthead-link:focus-visible {
+    @apply text-on-ground;
+  }
+
+  .masthead-link::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -2px 0;
+    height: 2px;
+    background-color: #d7f733;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .masthead-link.is-active {
+    @apply text-on-ground;
+  }
+
+  .masthead-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .read-progress {
+    position: absolute;
+    inset: auto 0 -1px 0;
+    height: 2px;
+    background-color: #d7f733;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    will-change: transform;
+  }
+
+  /* --- Tally field ------------------------------------------------------ */
+
+  /* The hero. 400 cells, one per test item, coloured by outcome. Verified is the
+     brand accent, so the page's argument is carried by the palette itself. */
+  .tally-field {
+    @apply block h-auto w-full;
+  }
+
+  .cell {
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cell-pass {
+    fill: #d7f733;
+  }
+
+  .cell-fail {
+    fill: #ff3b30;
+  }
+
+  .cell-pending {
+    fill: #8a8a92;
+  }
+
+  .cell-absent {
+    fill: #2a2a2f;
+  }
+
+  /* Isolating an outcome dims the rest instead of hiding it, so the proportion
+     stays readable while the subset is picked out. */
+  .tally-wrap[data-isolate] .cell {
+    opacity: 0.12;
+  }
+
+  .tally-wrap[data-isolate='pass'] .cell-pass,
+  .tally-wrap[data-isolate='fail'] .cell-fail,
+  .tally-wrap[data-isolate='pending'] .cell-pending,
+  .tally-wrap[data-isolate='absent'] .cell-absent {
+    opacity: 1;
+  }
+
+  /* Prints on a diagonal sweep. Opacity only, so 400 nodes stay cheap. */
+  html.js .tally-wrap:not(.is-printed) .cell {
+    opacity: 0;
+  }
+
+  html.js .tally-wrap.is-printed .cell {
+    opacity: 1;
+    transition: opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1) var(--cell-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js .tally-wrap:not(.is-printed) .cell {
+      opacity: 1;
+    }
+  }
+
+  /* --- Legend ----------------------------------------------------------- */
+
+  .legend-item {
+    @apply flex w-full items-baseline gap-3 border-t border-ground-rule py-3 text-left transition-colors;
+  }
+
+  .legend-item:hover {
+    @apply bg-ground-raised;
+  }
+
+  .legend-item[aria-pressed='true'] {
+    @apply bg-ground-raised;
+  }
+
+  .legend-swatch {
+    @apply mt-1 h-3 w-3 shrink-0;
+  }
+
+  .legend-count {
+    @apply font-display text-3xl leading-none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* --- Plates ----------------------------------------------------------- */
+
+  /* A document laid on the workbench. White, square, hard-edged. */
+  .plate {
+    @apply bg-plate text-ink;
+  }
+
+  .plate-label {
+    @apply text-label uppercase tracking-[0.07em] text-ink-muted;
+  }
+
+  /* --- Record table ----------------------------------------------------- */
+
+  .record-table {
+    @apply w-full border-collapse text-left;
+  }
+
+  .record-table th {
+    @apply border-b-2 border-ink px-3 py-2.5 text-label uppercase tracking-[0.07em] text-ink;
+  }
+
+  .record-table td {
+    @apply border-b border-plate-rule px-3 py-3.5 align-top text-sm text-ink-secondary;
+  }
+
+  .record-row {
+    transition: background-color 0.16s ease;
+  }
+
+  .record-row:hover {
+    @apply bg-plate-sunken;
+  }
+
+  .record-row[hidden] {
+    display: none;
+  }
+
+  /* Severity carries a hue and a distinct swatch shape, so the table survives a
+     greyscale print and colour vision deficiency. */
+  .sev {
+    @apply inline-flex items-center gap-2 whitespace-nowrap text-label uppercase tracking-[0.07em];
+  }
+
+  .sev::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    background-color: currentColor;
+  }
+
+  .sev-critical {
+    @apply text-sev-critical;
+  }
+
+  .sev-high {
+    @apply text-sev-high;
+  }
+
+  .sev-medium {
+    @apply text-sev-medium;
+  }
+
+  .sev-medium::before {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+
+  .sev-low {
+    @apply text-sev-low;
+  }
+
+  .sev-low::before {
+    background-image: linear-gradient(to bottom, currentColor 50%, transparent 50%);
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+
+  .filter-chip {
+    @apply border border-ink/25 px-3 py-1.5 text-label uppercase tracking-[0.07em] text-ink-muted transition-colors;
+  }
+
+  .filter-chip:hover {
+    @apply border-ink text-ink;
+  }
+
+  .filter-chip[aria-pressed='true'] {
+    @apply border-ink bg-ink text-plate;
+  }
+
+  .filter-chip kbd {
+    @apply ml-1.5 font-sans text-[10px];
+  }
+
+  /* --- Density chart ---------------------------------------------------- */
+
+  .chart-row {
+    @apply grid items-center gap-x-4 border-t border-plate-rule py-3;
+    grid-template-columns: minmax(7rem, 11rem) 1fr minmax(3.25rem, auto);
+  }
+
+  .chart-row:last-child {
+    @apply border-b border-plate-rule;
+  }
+
+  .chart-name {
+    @apply text-sm font-medium text-ink;
+  }
+
+  .chart-value {
+    @apply text-right font-display text-xl leading-none text-ink;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chart-bar {
+    @apply relative h-3 bg-plate-sunken;
+  }
+
+  .chart-bar span {
+    @apply absolute inset-y-0 left-0 bg-ink;
+    transform-origin: 0 50%;
+  }
+
+  /* A measured zero is a result, so it gets a mark rather than nothing. */
+  .chart-bar[data-zero='true'] span {
+    @apply w-[3px] bg-verified;
+  }
+
+  html.js .chart-bar span {
+    transform: scaleX(0);
+  }
+
+  html.js .chart-bar.is-drawn span {
+    transform: scaleX(1);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--bar-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js .chart-bar span {
+      transform: none;
+    }
+  }
+
+  /* --- Method ----------------------------------------------------------- */
+
+  .method-item {
+    @apply grid gap-x-10 gap-y-3 border-t border-ground-rule py-9;
+  }
+
+  @media (min-width: 900px) {
+    .method-item {
+      grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+    }
+  }
+
+  /* --- Systems marquee -------------------------------------------------- */
+
+  /* System names at signage scale. The list is the visual. */
+  .system-row {
+    @apply flex w-full items-center justify-between gap-6 border-t border-ground-rule py-6 text-left transition-colors;
+  }
+
+  .system-name {
+    @apply font-display text-huge uppercase leading-none transition-colors;
+  }
+
+  .system-row:hover .system-name,
+  .system-row:focus-visible .system-name {
+    @apply text-hivis;
+  }
+
+  .system-row:hover .system-note {
+    @apply text-on-ground;
+  }
+
+  /* --- Ledger ----------------------------------------------------------- */
+
+  .ledger > * {
+    @apply border-t border-plate-rule;
+  }
+
+  .ledger-row {
+    @apply grid items-baseline gap-x-6 gap-y-1 py-3.5;
+    grid-template-columns: minmax(6.5rem, 8rem) 1fr;
+  }
+
+  @media (max-width: 640px) {
+    .ledger-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* --- Portrait --------------------------------------------------------- */
+
+  .portrait {
+    @apply relative overflow-hidden bg-ground-raised;
+  }
+
+  .portrait img {
+    @apply h-full w-full object-cover;
+    filter: grayscale(100%) contrast(1.12) brightness(1.02);
+  }
+
+  /* One hi-vis marker across the plate edge, like a paint mark on inspected
+     stock. Decorative, but it is the only decoration on the page. */
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 6px;
+    background-color: #d7f733;
+  }
+
+  /* --- Sign-off --------------------------------------------------------- */
+
+  .contact-row {
+    @apply flex items-center justify-between gap-6 border-t border-ground/20 py-5 transition-colors;
+  }
+
+  .contact-row:hover {
+    @apply bg-ground/5;
+  }
+
+  /* --- Overlays --------------------------------------------------------- */
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  .overlay::backdrop {
+    background-color: rgba(13, 13, 15, 0.78);
+  }
+
+  html.has-overlay {
+    overflow: hidden;
+  }
+
+  .overlay-sheet {
+    @apply bg-plate text-ink;
+    box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
+  }
+
+  /* --- Entrances -------------------------------------------------------- */
+
+  html.js [data-enter] {
+    opacity: 0;
+  }
+
+  html.js [data-enter='rise'] {
+    transform: translateY(14px);
+  }
+
+  html.js [data-enter='slide'] {
+    transform: translateX(-16px);
+  }
+
+  html.js [data-enter].is-entered {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--enter-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--enter-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js [data-enter] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* ======================================================================
+     Artefact pages
+     ====================================================================== */
+
+  .doc-page table {
+    @apply w-full border-collapse bg-sheet-raised;
+    min-width: 42rem;
+    margin-top: 1rem;
+  }
+
+  .doc-page caption {
+    @apply pb-3 text-left font-mono text-field uppercase text-ink-muted;
+  }
+
+  .doc-page th {
+    @apply border border-rule bg-sheet-sunken px-4 py-3 text-left align-top font-mono text-field font-medium uppercase text-ink;
+  }
+
+  .doc-page td {
+    @apply border border-rule px-4 py-3 align-top text-sm text-ink-secondary;
+  }
+
+  .doc-table-kv th {
+    width: 28%;
+    min-width: 9rem;
+  }
+
+  .doc-page pre {
+    @apply relative overflow-x-auto border border-rule bg-sheet-raised p-6 text-ink-secondary;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .doc-page code {
+    @apply font-mono;
+    font-size: 0.75rem;
+    line-height: 1.75;
+  }
+
+  .doc-page :where(h2) {
+    @apply text-section-title text-ink;
+  }
+
+  .summary-card {
+    @apply border border-rule bg-sheet-raised p-5;
+  }
+
+  .summary-card h3 {
+    @apply font-mono text-field uppercase text-ink-muted;
+  }
+
+  .summary-card p {
+    @apply mt-2 font-mono text-3xl font-bold leading-none text-ink;
+  }
+
+  .tc-card {
+    @apply mb-12 border border-rule-strong bg-sheet-raised;
+  }
+
+  .tc-header {
+    @apply flex items-center gap-2 border-b border-rule-strong bg-sheet-sunken px-4 py-3 font-mono text-datum font-medium;
+  }
+
+  .tc-card table {
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .tc-card th,
+  .tc-card td {
+    @apply border-x-0;
+  }
+
+  .status-pass {
+    @apply inline-block border border-verified bg-verified-wash px-2 py-0.5 font-mono text-field uppercase text-verified;
+  }
+
+  .copy-button {
+    @apply absolute right-3 top-3 inline-flex items-center border border-rule-strong bg-sheet px-2.5 py-1 font-mono text-field uppercase text-ink-muted transition-colors;
+  }
+
+  .copy-button:hover {
+    @apply border-ink text-ink;
+  }
+
+  .copy-button[data-state='done'] {
+    @apply border-verified text-verified;
+  }
+}

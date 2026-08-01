@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Metrics Dashboard Summary | Syefdi Fasmawi Syaban</title>
+<meta name="description" content="Test execution metrics for ERM V3: 400 test items, 83 percent pass rate, defect density per module and a severity breakdown of every open finding."/>
+<meta name="author" content="Syefdi Fasmawi Syaban"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#eef0f3"/>
+<meta name="color-scheme" content="light"/>
+<link rel="canonical" href="https://syefdi.github.io/portfolio-v2/docs/metrics.html"/>
+
+<link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Martian+Mono:wght@400;500;700&amp;display=swap"/>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body class="doc-page mx-auto max-w-5xl p-4 pb-24 md:p-12">
+
+<!-- icon-sprite:start -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-arrow-back" viewBox="0 -960 960 960"><path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z"/></symbol>
+</svg>
+<!-- icon-sprite:end -->
+
+<a class="mb-8 inline-flex items-center gap-2 text-signal-ink hover:underline" href="../index.html">
+    <svg class="icon text-xl" aria-hidden="true" focusable="false"><use href="#icon-arrow-back"/></svg>
+    Back to Portfolio
+</a>
+
+<header class="mb-12 border-b border-rule pb-8">
+    <h1 class="mb-4 text-3xl font-bold text-ink md:text-4xl">Metrics Dashboard Summary</h1>
+    <div class="flex flex-col gap-2 font-mono text-sm text-signal-ink">
+        <p>Project: ERM (Enterprise Risk Management) Revamp V3 &amp; CRMX</p>
+        <p>Tester: Syefdi Fasmawi Syaban</p>
+    </div>
+    <p class="mt-4 text-ink-secondary">Data sourced from the <strong>REKAP STATUS ERMV3</strong> sheet (400 tasks documented in the summary sheet, 386 in the module breakdown).</p>
+</header>
+
+<main class="space-y-12">
+
+    <section aria-labelledby="summary-heading">
+        <h2 class="mb-6 text-2xl font-bold text-ink" id="summary-heading">Executive Summary</h2>
+        <div class="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div class="summary-card">
+                <h3>Total Test Items</h3>
+                <p>400</p>
+            </div>
+            <div class="summary-card border-verified">
+                <h3 class="text-verified">Pass Rate</h3>
+                <p>83.0%</p>
+            </div>
+            <div class="summary-card border-sev-critical">
+                <h3 class="text-sev-critical">Fail Rate</h3>
+                <p>5.25%</p>
+            </div>
+            <div class="summary-card">
+                <h3>Coverage</h3>
+                <p>97.25%</p>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-rule">
+            <table class="doc-table-kv">
+                <caption class="sr-only">Headline findings across the ERM V3 test run</caption>
+                <tbody>
+                    <tr><th scope="row">Module with Highest Defect Density</th><td>Dashboard L3 (50%)</td></tr>
+                    <tr><th scope="row">Most Stable Modules</th><td>Login, Risk Import, Mitigation Update PIC (0 defects)</td></tr>
+                    <tr><th scope="row">Open Items (unresolved)</th><td>54 items</td></tr>
+                    <tr><th scope="row">Cron Job Coverage</th><td class="text-sev-critical">0% (4 items not yet tested, multiple errors found)</td></tr>
+                    <tr><th scope="row">Dominant Bug Severity</th><td class="text-sev-high">High (43% of total bugs)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section aria-labelledby="progress-heading">
+        <h2 class="mb-6 text-2xl font-bold text-ink" id="progress-heading">Test Execution Progress - Overall</h2>
+        <div class="overflow-x-auto rounded-xl border border-rule">
+            <table>
+                <caption class="sr-only">Test execution status counts and percentages</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Status</th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-verified" aria-hidden="true"></span> Success</span></td><td>332</td><td>83.0%</td></tr>
+                    <tr><td><span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-sev-critical" aria-hidden="true"></span> Failed</span></td><td>21</td><td>5.25%</td></tr>
+                    <tr><td><span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-rule-strong" aria-hidden="true"></span> Not Yet Tested</span></td><td>11</td><td>2.75%</td></tr>
+                    <tr><td><span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-sev-medium" aria-hidden="true"></span> In Progress / Pending</span></td><td>36</td><td>9.0%</td></tr>
+                    <tr class="bg-sheet-sunken font-bold text-ink"><th scope="row">Total</th><td>400</td><td>100%</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section aria-labelledby="severity-heading">
+        <h2 class="mb-6 text-2xl font-bold text-ink" id="severity-heading">Bug Severity Breakdown</h2>
+        <p class="mb-4 text-ink-secondary">Based on analysis of all findings with Failed/Open status across all sheets.</p>
+        <div class="overflow-x-auto rounded-xl border border-rule">
+            <table>
+                <caption class="sr-only">Defect counts grouped by severity</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Severity</th>
+                        <th scope="col">Definition</th>
+                        <th scope="col">Estimated Count</th>
+                        <th scope="col">Example Findings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th class="text-sev-critical" scope="row">Critical</th><td>Core functions failing, data corruption, or total cron job failure</td><td class="text-center font-mono text-2xl">6</td><td>Cron job mail-mitigation-reminder error (DATE_FORMAT incompatible with PostgreSQL), risk import BAU/Project failed, Dashboard L2 grouping missing</td></tr>
+                    <tr><th class="text-sev-high" scope="row">High</th><td>Core feature issues, flows cannot be completed, emails routed incorrectly</td><td class="text-center font-mono text-2xl">9</td><td>Dashboard L3 chart error, misdirected email links (pointing to Edit instead of Mitigation Update), inaccurate flagging with multiple mitigations</td></tr>
+                    <tr><th class="text-sev-medium" scope="row">Medium</th><td>Features work but output is inaccurate, UI inconsistencies</td><td class="text-center font-mono text-2xl">5</td><td>Home total counter is incorrect, total Login Frequency is incorrect, Masterdata Hierarchy DataTables error</td></tr>
+                    <tr><th class="text-signal-ink" scope="row">Low</th><td>Cosmetic, labels, minor UX issues</td><td class="text-center font-mono text-2xl">1</td><td>HTML tags visible during risk deletion (fixed)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section aria-labelledby="density-heading">
+        <h2 class="mb-6 text-2xl font-bold text-ink" id="density-heading">Defect Density per Module</h2>
+        <p class="mb-4 text-ink-secondary">Defect density = number of bugs / total test cases per module.</p>
+        <div class="overflow-x-auto rounded-xl border border-rule">
+            <table>
+                <caption class="sr-only">Defect density for each ERM V3 module</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Total TC</th>
+                        <th scope="col">Defect</th>
+                        <th scope="col">Defect Density</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Dashboard L3</th><td class="text-center">8</td><td class="text-center text-sev-critical">4</td><td class="font-bold text-sev-critical">50.0%</td></tr>
+                    <tr><th scope="row">Dashboard L2</th><td class="text-center">15</td><td class="text-center text-sev-critical">5</td><td class="font-bold text-sev-critical">33.3%</td></tr>
+                    <tr><th scope="row">Masterdata Project</th><td class="text-center">4</td><td class="text-center text-sev-medium">1</td><td class="font-bold text-sev-medium">25.0%</td></tr>
+                    <tr><th scope="row">Email Notification</th><td class="text-center">24</td><td class="text-center">1</td><td>4.2%</td></tr>
+                    <tr><th scope="row">Risk Registered</th><td class="text-center">158</td><td class="text-center">4</td><td>2.5%</td></tr>
+                    <tr><th scope="row">Home - Chart</th><td class="text-center">9</td><td class="text-center text-signal-ink">0</td><td class="text-signal-ink">-</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<footer class="mt-16 border-t border-rule pt-8">
+    <a class="inline-flex items-center gap-2 text-sm text-signal-ink hover:underline" href="../index.html">
+        <svg class="icon text-base" aria-hidden="true" focusable="false"><use href="#icon-arrow-back"/></svg>
+        Back to Portfolio
+    </a>
+</footer>
+
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Smoke Test Checklist | Syefdi Fasmawi Syaban</title>
+<meta name="description" content="Smoke test checklist covering the critical happy path of the ERM V3 and CRMX enterprise risk management systems, with the expected behaviour and result for each module."/>
+<meta name="author" content="Syefdi Fasmawi Syaban"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#eef0f3"/>
+<meta name="color-scheme" content="light"/>
+<link rel="canonical" href="https://syefdi.github.io/portfolio-v2/docs/smoke-test.html"/>
+
+<link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Martian+Mono:wght@400;500;700&amp;display=swap"/>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body class="doc-page mx-auto max-w-5xl p-4 pb-24 md:p-12">
+
+<!-- icon-sprite:start -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-arrow-back" viewBox="0 -960 960 960"><path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z"/></symbol>
+</svg>
+<!-- icon-sprite:end -->
+
+<a class="mb-8 inline-flex items-center gap-2 text-signal-ink hover:underline" href="../index.html">
+    <svg class="icon text-xl" aria-hidden="true" focusable="false"><use href="#icon-arrow-back"/></svg>
+    Back to Portfolio
+</a>
+
+<header class="mb-12 border-b border-rule pb-8">
+    <h1 class="mb-4 text-3xl font-bold text-ink md:text-4xl">Smoke Test Checklist</h1>
+    <div class="flex flex-col gap-2 font-mono text-sm text-signal-ink">
+        <p>Project: ERM (Enterprise Risk Management) Revamp V3 &amp; CRMX</p>
+        <p>Tester: Syefdi Fasmawi Syaban</p>
+    </div>
+</header>
+
+<main class="space-y-8">
+    <p class="leading-relaxed text-ink-secondary">Critical modules tested across the primary happy path of the ERM V3 system.</p>
+
+    <div class="overflow-x-auto rounded-xl border border-rule">
+        <table>
+            <caption class="sr-only">Smoke test results for each ERM V3 module</caption>
+            <thead>
+                <tr>
+                    <th class="w-1/4" scope="col">Module</th>
+                    <th class="w-1/3" scope="col">Test Step</th>
+                    <th class="w-1/3" scope="col">Expected Behavior</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Login</td><td>User inputs valid credentials and submits</td><td>User successfully logs in, directed to Home based on role (BAU/Project)</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Login</td><td>User selects BAU or Project mode post-login</td><td>Mode is saved, displayed menus match the selected mode</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Risk Input</td><td>User fills out complete Risk Input form (risk owner, inherent risk, current control, action, mitigation) and saves</td><td>Risk is saved to Need Follow Up tab, risk owner receives email notification</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Risk Register - Need Follow Up</td><td>User opens Need Follow Up tab, completes data, and saves to Registered</td><td>Risk moves to Registered tab, PIC receives email notification</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Risk Register - Registered</td><td>User opens risk details in Registered tab</td><td>All information displayed accurately: risk number, flagging, plan/actual progress, mitigation info</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Mitigation Update (PIC)</td><td>PIC logs in, opens Mitigation Update Required, fills progress, and saves</td><td>Progress saved, email notification sent to PIC and Risk Owner</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Mitigation Update (Risk Owner)</td><td>Risk Owner fills Residual Risk Actual and saves</td><td>Flag changes from red to green if conditions are met</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Home - Total Counter</td><td>User opens Home</td><td>Registered, Need Follow Up, Deleted, and Inactive counters display accurate numbers consistent with RR tab data</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Dashboard Level 1</td><td>User opens Dashboard L1</td><td>Top Risk chart and mitigation progress plan/actual appear according to the current month</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Dashboard Level 2</td><td>User opens Dashboard L2 and applies filter</td><td>Risk details and risk mapping data filtered correctly, N/A grouping is calculated</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Email Notification - Request Change</td><td>PIC submits request change (due date/pic/mitigation)</td><td>Risk Owner receives email with link directing to Mitigation Update Required menu</td><td><span class="status-pass">PASSED</span></td></tr>
+                <tr><td>Flagging</td><td>Risk with all mitigations updated by PIC and Residual Risk Actual filled by Risk Owner</td><td>Flag turns green</td><td><span class="status-pass">PASSED</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer class="mt-16 border-t border-rule pt-8">
+    <a class="inline-flex items-center gap-2 text-sm text-signal-ink hover:underline" href="../index.html">
+        <svg class="icon text-base" aria-hidden="true" focusable="false"><use href="#icon-arrow-back"/></svg>
+        Back to Portfolio
+    </a>
+</footer>
+
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

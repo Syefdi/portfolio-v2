@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://syefdi.github.io/portfolio-v2/sitemap.xml

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Bug Report Template &amp; Examples | Syefdi Fasmawi Syaban</title>
+<meta name="description" content="The bug report template used on ERM V3 and CRMX, plus a real critical defect write-up covering a cron job failure caused by MySQL date syntax running against PostgreSQL."/>
+<meta name="author" content="Syefdi Fasmawi Syaban"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#eef0f3"/>
+<meta name="color-scheme" content="light"/>
+<link rel="canonical" href="https://syefdi.github.io/portfolio-v2/docs/bug-report.html"/>
+
+<link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Martian+Mono:wght@400;500;700&amp;display=swap"/>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body class="doc-page mx-auto max-w-4xl p-4 pb-24 md:p-12">
+
+<!-- icon-sprite:start -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-arrow-back" viewBox="0 -960 960 960"><path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z"/></symbol>
+  <symbol id="icon-article" viewBox="0 -960 960 960"><path d="M277-279h275v-60H277v60Zm0-171h406v-60H277v60Zm0-171h406v-60H277v60Zm-97 501q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600v-600H180v600Zm0-600v600-600Z"/></symbol>
+  <symbol id="icon-bug-report" viewBox="0 -960 960 960"><path d="M480-180q72 0 123-50.5T654-353v-167q0-72-51-122.5T480-693q-72 0-123 50.5T306-520v167q0 72 51 122.5T480-180Zm-80-140h160v-60H400v60Zm0-173h160v-60H400v60Zm80 57h.5-.5.5-.5.5-.5.5-.5Zm0 316q-65 0-121-31t-83-89H160v-60h92q-7-26-7-52.5V-406h-85v-60h85q0-29 .5-57.5T254-580h-94v-60h120q14-28 37-49t51-35l-77-76 40-40 94 94q28-10 56.5-10t56.5 10l94-94 40 40-76 76q28 14 49.5 35.5T683-640h117v60h-94q9 28 8.5 56.5T714-466h86v60h-86q0 27 .5 53.5T708-300h92v60H685q-26 59-82.5 89.5T480-120Z"/></symbol>
+</svg>
+<!-- icon-sprite:end -->
+
+<a class="mb-8 inline-flex items-center gap-2 text-signal-ink hover:underline" href="../index.html">
+    <svg class="icon text-xl" aria-hidden="true" focusable="false"><use href="#icon-arrow-back"/></svg>
+    Back to Portfolio
+</a>
+
+<header class="mb-12 border-b border-rule pb-8">
+    <h1 class="mb-4 text-3xl font-bold text-ink md:text-4xl">Bug Report - Template &amp; Real Examples</h1>
+    <div class="flex flex-col gap-2 font-mono text-sm text-signal-ink">
+        <p>Project: ERM (Enterprise Risk Management) Revamp V3 &amp; CRMX</p>
+        <p>Tester: Syefdi Fasmawi Syaban</p>
+    </div>
+</header>
+
+<main class="space-y-12">
+
+    <section aria-labelledby="template-heading">
+        <h2 class="mb-4 flex items-center gap-2 text-2xl font-bold text-ink" id="template-heading">
+            <svg class="icon text-2xl text-signal-ink" aria-hidden="true" focusable="false"><use href="#icon-article"/></svg>
+            Bug Report Template
+        </h2>
+        <p class="mb-4 text-ink-secondary">Standard format used to comprehensively report system anomalies.</p>
+<pre data-copy-label="the bug report template"><code>Title            : [ID-XXX] Concise, specific, action-oriented
+Application      : ERM V3 / CRMX
+Environment      : Production / Staging / Dev
+Browser/OS       : Chrome 124 / Windows 10
+Tester           : [Name]
+Date Found       : YYYY-MM-DD
+Severity         : Critical / High / Medium / Low
+Priority         : P1 / P2 / P3 / P4
+Status           : Open / In Progress / Fixed / Verified
+
+Steps to Reproduce:
+  1. [Step 1]
+  2. [Step 2]
+  3. [Step 3]
+
+Expected Result  :
+  [What the system should do]
+
+Actual Result    :
+  [What the system actually does]
+
+Attachments      : [screenshot / video / log]
+Notes            :
+  [Additional information, example risk numbers, test credentials]</code></pre>
+    </section>
+
+    <section aria-labelledby="example-heading">
+        <h2 class="mb-4 flex items-center gap-2 text-2xl font-bold text-sev-critical" id="example-heading">
+            <svg class="icon text-2xl text-sev-critical" aria-hidden="true" focusable="false"><use href="#icon-bug-report"/></svg>
+            Critical Bug Example from Real Data
+        </h2>
+        <p class="mb-4 text-ink-secondary">Actual report of a cron job failure in the PostgreSQL system.</p>
+<pre data-copy-label="the critical bug example"><code class="text-sev-critical/80">Title            : [ERM-CRON-001] Cron Job mail-mitigation-reminder failed to execute
+                   due to DATE_FORMAT() function incompatibility in PostgreSQL
+
+Application      : ERM V3
+Environment      : Dev (ermdev.abm-investama.com)
+Browser/OS       : N/A (Server-side Cron)
+Tester           : Syefdi Syaban
+Date Found       : 2026-06-09 (Date Issue ref: 46196)
+Severity         : Critical
+Priority         : P1
+Status           : Open
+
+Steps to Reproduce:
+  1. Login to the ERM V3 server.
+  2. Trigger the cron job endpoint:
+     GET /api/mail/mitigation/reminder
+  3. Observe the response or server log.
+
+Expected Result  :
+  Cron job executes successfully. Mitigation update reminder emails
+  are sent to all PICs who haven't updated in the current period.
+
+Actual Result    :
+  Cron job fails with error:
+  "Undefined function DATE_FORMAT"
+  The database used is PostgreSQL, but the query in the
+  cron job uses the DATE_FORMAT() function, which is MySQL
+  syntax. In PostgreSQL, the valid function is TO_CHAR().
+  Consequently, all mitigation reminder emails fail to send.
+
+Impact           :
+  All PICs do not receive reminder notifications. Risk Owners
+  are unaware of pending mitigation updates. Flags remain red
+  with no automated reminders, potentially causing compliance
+  gaps in risk reporting.
+
+Attachments      : server_error_log_cron_46196.txt
+Notes            :
+  - Found similar errors in other cron jobs within the same
+    batch (mail-earlywarning-notif, mail-riskresidual-reminder).
+  - Fix: replace DATE_FORMAT(col, '%Y-%m') with
+    TO_CHAR(col, 'YYYY-MM') in all cron queries.
+  - Internal tester ref: "test by syefdi 11:13" on ERM V3 sheet.</code></pre>
+    </section>
+
+</main>
+
+<footer class="mt-16 border-t border-rule pt-8">
+    <a class="inline-flex items-center gap-2 text-sm text-signal-ink hover:underline" href="../index.html">
+        <svg class="icon text-base" aria-hidden="true" focusable="false"><use href="#icon-arrow-back"/></svg>
+        Back to Portfolio
+    </a>
+</footer>
+
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

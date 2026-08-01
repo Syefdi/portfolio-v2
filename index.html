@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Syefdi Fasmawi Syaban | QA Engineer</title>
+<meta name="description" content="QA Engineer in South Jakarta. 400 test items on ERM V3: 332 passed, 21 failed and were fixed before release. The full defect log, test cases and metrics are published here."/>
+<meta name="author" content="Syefdi Fasmawi Syaban"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#0d0d0f"/>
+<meta name="color-scheme" content="dark light"/>
+<link rel="canonical" href="https://syefdi.github.io/portfolio-v2/"/>
+
+<meta property="og:type" content="profile"/>
+<meta property="og:site_name" content="Syefdi Fasmawi Syaban"/>
+<meta property="og:title" content="Syefdi Fasmawi Syaban | QA Engineer"/>
+<meta property="og:description" content="400 test items. 332 passed. 21 failed and were fixed before release. Six systems shipped clean."/>
+<meta property="og:url" content="https://syefdi.github.io/portfolio-v2/"/>
+<meta property="og:image" content="https://syefdi.github.io/portfolio-v2/assets/images/SyefdiSyaban-IMG.jpg"/>
+<meta property="og:image:alt" content="Syefdi Fasmawi Syaban"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Syefdi Fasmawi Syaban | QA Engineer"/>
+<meta name="twitter:description" content="400 test items. 332 passed. 21 failed and were fixed before release."/>
+<meta name="twitter:image" content="https://syefdi.github.io/portfolio-v2/assets/images/SyefdiSyaban-IMG.jpg"/>
+
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/>
+<link rel="apple-touch-icon" href="assets/images/favicon.png"/>
+
+<!-- One request per family, so tooling that parses the markup sees both. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&amp;display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;display=swap"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
+
+<script>
+    /* Set before first paint. The entrance states opt in on this flag, so without
+       scripting nothing is left invisible waiting for a transition. */
+    document.documentElement.classList.add('js');
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Syefdi Fasmawi Syaban",
+    "jobTitle": "QA Engineer",
+    "url": "https://syefdi.github.io/portfolio-v2/",
+    "image": "https://syefdi.github.io/portfolio-v2/assets/images/SyefdiSyaban-IMG.jpg",
+    "email": "mailto:syefdifasmawi@gmail.com",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "South Jakarta",
+        "addressCountry": "ID"
+    },
+    "worksFor": { "@type": "Organization", "name": "CV Gemilang Inti Teknologi" },
+    "knowsAbout": [
+        "Manual Testing", "Functional Testing", "Regression Testing",
+        "API Testing", "Test Case Design", "Defect Reporting", "Quality Assurance"
+    ],
+    "sameAs": [
+        "https://github.com/Syefdi",
+        "https://www.linkedin.com/in/syefdi-fasmawi-syaban-6b6531337/"
+    ]
+}
+</script>
+</head>
+<body>
+
+<!-- icon-sprite:start -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-arrow-outward" viewBox="0 -960 960 960"><path d="m242-246-42-42 412-412H234v-60h480v480h-60v-378L242-246Z"/></symbol>
+  <symbol id="icon-close" viewBox="0 -960 960 960"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></symbol>
+  <symbol id="icon-format-list-bulleted" viewBox="0 -960 960 960"><path d="M377-198v-60h463v60H377Zm0-252v-60h463v60H377Zm0-253v-60h463v60H377ZM189-161q-28.05 0-48.02-19Q121-199 121-227.5t19.5-48q19.5-19.5 48-19.5t47.5 19.98q19 19.97 19 48.02 0 27.23-19.39 46.61Q216.23-161 189-161Zm0-252q-28.05 0-48.02-19.68Q121-452.36 121-480t19.98-47.32Q160.95-547 189-547q27.23 0 46.61 19.68Q255-507.64 255-480t-19.39 47.32Q216.23-413 189-413Zm-1-253q-27.64 0-47.32-19.68T121-733q0-27.64 19.68-47.32T188-800q27.64 0 47.32 19.68T255-733q0 27.64-19.68 47.32T188-666Z"/></symbol>
+</svg>
+<!-- icon-sprite:end -->
+
+<a class="skip-link" href="#findings">Skip to the defect log</a>
+
+<header class="masthead">
+    <div class="zone">
+        <div class="zone-inner flex items-center justify-between gap-6 py-3">
+            <a class="flex items-center gap-3" href="#top">
+                <span class="font-display text-xl uppercase leading-none tracking-tight">Syefdi F. Syaban</span>
+                <span class="hidden label text-on-ground-muted sm:inline">QA Engineer</span>
+            </a>
+
+            <nav aria-label="Contents" class="hidden items-center gap-7 lg:flex">
+                <a class="masthead-link" data-section-link href="#findings">Findings</a>
+                <a class="masthead-link" data-section-link href="#method">Method</a>
+                <a class="masthead-link" data-section-link href="#systems">Systems</a>
+                <a class="masthead-link" data-section-link href="#instruments">Instruments</a>
+                <a class="masthead-link" data-section-link href="#sign-off">Contact</a>
+            </nav>
+
+            <button aria-controls="contents-overlay" aria-expanded="false" class="flex items-center gap-2 border border-ground-rule px-3 py-1.5 label transition-colors hover:border-hivis hover:text-hivis lg:hidden" id="contents-toggle" type="button">
+                <svg class="h-3 w-3 fill-current" aria-hidden="true" focusable="false"><use href="#icon-format-list-bulleted"/></svg>
+                Contents
+            </button>
+        </div>
+    </div>
+    <div class="read-progress" id="read-progress" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+
+<!-- ===================================================================
+     Hero. The tally field is the image; the headline is the claim it proves.
+     =================================================================== -->
+<section aria-labelledby="hero-claim" class="zone pt-10 lg:pt-16">
+    <div class="zone-inner">
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4 border-b border-ground-rule pb-6" data-enter="rise">
+            <span class="portrait h-16 w-16 shrink-0">
+                <img alt="Syefdi Fasmawi Syaban" decoding="async" height="714" loading="eager" src="assets/images/SyefdiSyaban-IMG.jpg" width="834"/>
+            </span>
+            <p class="label text-on-ground-muted">
+                Quality assurance
+                <span aria-hidden="true" class="mx-3 inline-block h-1 w-1 bg-on-ground-muted align-middle"></span>
+                South Jakarta, Indonesia
+                <span aria-hidden="true" class="mx-3 inline-block h-1 w-1 bg-on-ground-muted align-middle"></span>
+                <span class="text-hivis">Available for hire</span>
+            </p>
+        </div>
+
+        <div class="grid gap-x-12 gap-y-10 pt-10 lg:grid-cols-12 lg:pt-14">
+            <div class="lg:col-span-7">
+                <h1 class="font-display text-mega uppercase" data-enter="rise" id="hero-claim">
+                    Six systems<br/>shipped<br/><span class="text-hivis">clean</span>
+                </h1>
+
+                <p class="mt-8 max-w-measure text-lead text-on-ground-muted" data-enter="rise" style="--enter-delay: 120ms">
+                    400 test items on the ERM V3 release. 332 passed. 21 failed, and every one of
+                    them was written up and closed before the release went out. The block to the
+                    right is that run, one cell per item.
+                </p>
+
+                <p class="mt-8 max-w-measure-tight text-sm text-on-ground-muted" data-enter="rise" style="--enter-delay: 200ms">
+                    I am the tester who writes the record down properly. Everything on this page is
+                    output from real work, not a description of it.
+                </p>
+            </div>
+
+            <div class="lg:col-span-5">
+                <figure class="tally-wrap" data-enter="rise" id="tally" style="--enter-delay: 260ms">
+                    <!-- tally-field:start -->
+<svg class="tally-field" viewBox="0 0 200 200" role="img" aria-labelledby="tally-title tally-desc" preserveAspectRatio="xMidYMid meet">
+  <title id="tally-title">Test execution tally for ERM V3</title>
+  <desc id="tally-desc">400 test items: 332 passed, 21 failed, 36 in progress, 11 not executed. One cell per item; the arrangement is a tally, not a sequence.</desc>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="0" width="8" height="8" style="--cell-delay:0ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="0" width="8" height="8" style="--cell-delay:14ms"/><rect class="cell cell-pending" data-outcome="pending" x="20" y="0" width="8" height="8" style="--cell-delay:28ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="0" width="8" height="8" style="--cell-delay:42ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="0" width="8" height="8" style="--cell-delay:56ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="0" width="8" height="8" style="--cell-delay:70ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="0" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="0" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="0" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pending" data-outcome="pending" x="90" y="0" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="0" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="0" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="0" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="0" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="0" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pending" data-outcome="pending" x="150" y="0" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="0" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="0" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="0" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="0" width="8" height="8" style="--cell-delay:266ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="10" width="8" height="8" style="--cell-delay:14ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="10" width="8" height="8" style="--cell-delay:28ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="10" width="8" height="8" style="--cell-delay:42ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="10" width="8" height="8" style="--cell-delay:56ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="10" width="8" height="8" style="--cell-delay:70ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="10" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="10" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="10" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="10" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="10" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="10" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="10" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="10" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="10" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="10" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="10" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="10" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="10" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="10" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-absent" data-outcome="absent" x="190" y="10" width="8" height="8" style="--cell-delay:280ms"/>
+  <rect class="cell cell-pending" data-outcome="pending" x="0" y="20" width="8" height="8" style="--cell-delay:28ms"/><rect class="cell cell-pending" data-outcome="pending" x="10" y="20" width="8" height="8" style="--cell-delay:42ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="20" width="8" height="8" style="--cell-delay:56ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="20" width="8" height="8" style="--cell-delay:70ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="20" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="20" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-absent" data-outcome="absent" x="60" y="20" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="20" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="20" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="20" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="20" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="20" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="20" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="20" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pending" data-outcome="pending" x="140" y="20" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="20" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="20" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="20" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="20" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="20" width="8" height="8" style="--cell-delay:294ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="30" width="8" height="8" style="--cell-delay:42ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="30" width="8" height="8" style="--cell-delay:56ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="30" width="8" height="8" style="--cell-delay:70ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="30" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="30" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="30" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="30" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="30" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="30" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pending" data-outcome="pending" x="90" y="30" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="30" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-fail" data-outcome="fail" x="110" y="30" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="30" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pending" data-outcome="pending" x="130" y="30" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="30" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="30" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pending" data-outcome="pending" x="160" y="30" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="30" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pending" data-outcome="pending" x="180" y="30" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="30" width="8" height="8" style="--cell-delay:308ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="40" width="8" height="8" style="--cell-delay:56ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="40" width="8" height="8" style="--cell-delay:70ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="40" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="40" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-absent" data-outcome="absent" x="40" y="40" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="40" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="40" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="40" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pending" data-outcome="pending" x="80" y="40" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-absent" data-outcome="absent" x="90" y="40" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="40" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="40" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="40" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="40" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="40" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="40" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="40" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="40" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="40" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="40" width="8" height="8" style="--cell-delay:322ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="50" width="8" height="8" style="--cell-delay:70ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="50" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="50" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="50" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="50" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="50" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="50" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="50" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="50" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="50" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="50" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-fail" data-outcome="fail" x="110" y="50" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="50" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="50" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="50" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="50" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pending" data-outcome="pending" x="160" y="50" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="50" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="50" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="50" width="8" height="8" style="--cell-delay:336ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="60" width="8" height="8" style="--cell-delay:84ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="60" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="60" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pending" data-outcome="pending" x="30" y="60" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="60" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="60" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="60" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-fail" data-outcome="fail" x="70" y="60" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-fail" data-outcome="fail" x="80" y="60" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="60" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="60" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="60" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="60" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pending" data-outcome="pending" x="130" y="60" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pending" data-outcome="pending" x="140" y="60" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="60" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="60" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-fail" data-outcome="fail" x="170" y="60" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="60" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="60" width="8" height="8" style="--cell-delay:350ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="70" width="8" height="8" style="--cell-delay:98ms"/><rect class="cell cell-fail" data-outcome="fail" x="10" y="70" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pending" data-outcome="pending" x="20" y="70" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="70" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="70" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="70" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-fail" data-outcome="fail" x="60" y="70" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="70" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="70" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="70" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="70" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="70" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="70" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="70" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="70" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="70" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="70" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="70" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="70" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="70" width="8" height="8" style="--cell-delay:364ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="80" width="8" height="8" style="--cell-delay:112ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="80" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="80" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="80" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="80" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-fail" data-outcome="fail" x="50" y="80" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-absent" data-outcome="absent" x="60" y="80" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="80" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="80" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="80" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="80" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="80" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="80" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="80" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="80" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="80" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="80" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="80" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="80" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-fail" data-outcome="fail" x="190" y="80" width="8" height="8" style="--cell-delay:378ms"/>
+  <rect class="cell cell-pending" data-outcome="pending" x="0" y="90" width="8" height="8" style="--cell-delay:126ms"/><rect class="cell cell-pending" data-outcome="pending" x="10" y="90" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="90" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="90" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-fail" data-outcome="fail" x="40" y="90" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="90" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-fail" data-outcome="fail" x="60" y="90" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="90" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="90" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="90" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-fail" data-outcome="fail" x="100" y="90" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="90" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pending" data-outcome="pending" x="120" y="90" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="90" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="90" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="90" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="90" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="90" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="90" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-fail" data-outcome="fail" x="190" y="90" width="8" height="8" style="--cell-delay:392ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="100" width="8" height="8" style="--cell-delay:140ms"/><rect class="cell cell-pending" data-outcome="pending" x="10" y="100" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="100" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-fail" data-outcome="fail" x="30" y="100" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="100" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-fail" data-outcome="fail" x="50" y="100" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="100" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="100" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="100" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="100" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-absent" data-outcome="absent" x="100" y="100" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="100" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="100" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pending" data-outcome="pending" x="130" y="100" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-fail" data-outcome="fail" x="140" y="100" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="100" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="100" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="100" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="100" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="100" width="8" height="8" style="--cell-delay:406ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="110" width="8" height="8" style="--cell-delay:154ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="110" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="110" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="110" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="110" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="110" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-fail" data-outcome="fail" x="60" y="110" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="110" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pending" data-outcome="pending" x="80" y="110" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="110" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="110" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="110" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="110" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="110" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="110" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-fail" data-outcome="fail" x="150" y="110" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="110" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="110" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="110" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="110" width="8" height="8" style="--cell-delay:420ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="120" width="8" height="8" style="--cell-delay:168ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="120" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pending" data-outcome="pending" x="20" y="120" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-absent" data-outcome="absent" x="30" y="120" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="120" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="120" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-fail" data-outcome="fail" x="60" y="120" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="120" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="120" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="120" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="120" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="120" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="120" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-absent" data-outcome="absent" x="130" y="120" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pending" data-outcome="pending" x="140" y="120" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="120" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pending" data-outcome="pending" x="160" y="120" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="120" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="120" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="120" width="8" height="8" style="--cell-delay:434ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="130" width="8" height="8" style="--cell-delay:182ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="130" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="130" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="130" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="130" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="130" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="130" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pending" data-outcome="pending" x="70" y="130" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pending" data-outcome="pending" x="80" y="130" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="130" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-absent" data-outcome="absent" x="100" y="130" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="130" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="130" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="130" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="130" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="130" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="130" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="130" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="130" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="130" width="8" height="8" style="--cell-delay:448ms"/>
+  <rect class="cell cell-pending" data-outcome="pending" x="0" y="140" width="8" height="8" style="--cell-delay:196ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="140" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="140" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="140" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="140" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="140" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="140" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="140" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="140" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="140" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="140" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="140" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="140" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="140" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="140" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="140" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="140" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="140" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pending" data-outcome="pending" x="180" y="140" width="8" height="8" style="--cell-delay:448ms"/><rect class="cell cell-fail" data-outcome="fail" x="190" y="140" width="8" height="8" style="--cell-delay:462ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="150" width="8" height="8" style="--cell-delay:210ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="150" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="150" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="150" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="150" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="150" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="150" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="150" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="150" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="150" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="150" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="150" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="150" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="150" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pending" data-outcome="pending" x="140" y="150" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="150" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="150" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pending" data-outcome="pending" x="170" y="150" width="8" height="8" style="--cell-delay:448ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="150" width="8" height="8" style="--cell-delay:462ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="150" width="8" height="8" style="--cell-delay:476ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="160" width="8" height="8" style="--cell-delay:224ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="160" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="160" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="160" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="160" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="160" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="160" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="160" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="160" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="160" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="160" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="160" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="160" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pending" data-outcome="pending" x="130" y="160" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="160" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pending" data-outcome="pending" x="150" y="160" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="160" width="8" height="8" style="--cell-delay:448ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="160" width="8" height="8" style="--cell-delay:462ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="160" width="8" height="8" style="--cell-delay:476ms"/><rect class="cell cell-pending" data-outcome="pending" x="190" y="160" width="8" height="8" style="--cell-delay:490ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="170" width="8" height="8" style="--cell-delay:238ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="170" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="170" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-fail" data-outcome="fail" x="30" y="170" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="170" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="170" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="170" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="170" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="170" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="170" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="170" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="170" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="170" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="170" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="170" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="170" width="8" height="8" style="--cell-delay:448ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="170" width="8" height="8" style="--cell-delay:462ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="170" width="8" height="8" style="--cell-delay:476ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="170" width="8" height="8" style="--cell-delay:490ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="170" width="8" height="8" style="--cell-delay:504ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="180" width="8" height="8" style="--cell-delay:252ms"/><rect class="cell cell-pass" data-outcome="pass" x="10" y="180" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="180" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="180" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="180" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="180" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-absent" data-outcome="absent" x="60" y="180" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="180" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="180" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pending" data-outcome="pending" x="90" y="180" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="180" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="110" y="180" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="180" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="180" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="180" width="8" height="8" style="--cell-delay:448ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="180" width="8" height="8" style="--cell-delay:462ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="180" width="8" height="8" style="--cell-delay:476ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="180" width="8" height="8" style="--cell-delay:490ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="180" width="8" height="8" style="--cell-delay:504ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="180" width="8" height="8" style="--cell-delay:518ms"/>
+  <rect class="cell cell-pass" data-outcome="pass" x="0" y="190" width="8" height="8" style="--cell-delay:266ms"/><rect class="cell cell-pending" data-outcome="pending" x="10" y="190" width="8" height="8" style="--cell-delay:280ms"/><rect class="cell cell-pass" data-outcome="pass" x="20" y="190" width="8" height="8" style="--cell-delay:294ms"/><rect class="cell cell-pass" data-outcome="pass" x="30" y="190" width="8" height="8" style="--cell-delay:308ms"/><rect class="cell cell-pass" data-outcome="pass" x="40" y="190" width="8" height="8" style="--cell-delay:322ms"/><rect class="cell cell-pass" data-outcome="pass" x="50" y="190" width="8" height="8" style="--cell-delay:336ms"/><rect class="cell cell-pass" data-outcome="pass" x="60" y="190" width="8" height="8" style="--cell-delay:350ms"/><rect class="cell cell-pass" data-outcome="pass" x="70" y="190" width="8" height="8" style="--cell-delay:364ms"/><rect class="cell cell-pass" data-outcome="pass" x="80" y="190" width="8" height="8" style="--cell-delay:378ms"/><rect class="cell cell-pass" data-outcome="pass" x="90" y="190" width="8" height="8" style="--cell-delay:392ms"/><rect class="cell cell-pass" data-outcome="pass" x="100" y="190" width="8" height="8" style="--cell-delay:406ms"/><rect class="cell cell-absent" data-outcome="absent" x="110" y="190" width="8" height="8" style="--cell-delay:420ms"/><rect class="cell cell-pass" data-outcome="pass" x="120" y="190" width="8" height="8" style="--cell-delay:434ms"/><rect class="cell cell-pass" data-outcome="pass" x="130" y="190" width="8" height="8" style="--cell-delay:448ms"/><rect class="cell cell-pass" data-outcome="pass" x="140" y="190" width="8" height="8" style="--cell-delay:462ms"/><rect class="cell cell-pass" data-outcome="pass" x="150" y="190" width="8" height="8" style="--cell-delay:476ms"/><rect class="cell cell-pass" data-outcome="pass" x="160" y="190" width="8" height="8" style="--cell-delay:490ms"/><rect class="cell cell-pass" data-outcome="pass" x="170" y="190" width="8" height="8" style="--cell-delay:504ms"/><rect class="cell cell-pass" data-outcome="pass" x="180" y="190" width="8" height="8" style="--cell-delay:518ms"/><rect class="cell cell-pass" data-outcome="pass" x="190" y="190" width="8" height="8" style="--cell-delay:532ms"/>
+</svg>
+<!-- tally-field:end -->
+
+                    <figcaption class="mt-5">
+                        <p class="label text-on-ground-muted">
+                            ERM V3 test execution
+                            <span aria-hidden="true" class="mx-2.5 inline-block h-1 w-1 bg-on-ground-muted align-middle"></span>
+                            400 items
+                            <span aria-hidden="true" class="mx-2.5 inline-block h-1 w-1 bg-on-ground-muted align-middle"></span>
+                            tally, not a sequence
+                        </p>
+
+                        <div aria-label="Isolate an outcome in the tally" class="mt-4" id="tally-legend" role="group">
+                            <button aria-pressed="false" class="legend-item" data-outcome="pass" type="button">
+                                <span class="legend-swatch bg-hivis"></span>
+                                <span class="legend-count text-hivis">332</span>
+                                <span class="flex-1 label text-on-ground-muted">Passed<span class="ml-2">83.0%</span></span>
+                            </button>
+                            <button aria-pressed="false" class="legend-item" data-outcome="fail" type="button">
+                                <span class="legend-swatch bg-fail"></span>
+                                <span class="legend-count text-fail">21</span>
+                                <span class="flex-1 label text-on-ground-muted">Failed<span class="ml-2">5.25%</span></span>
+                            </button>
+                            <button aria-pressed="false" class="legend-item" data-outcome="pending" type="button">
+                                <span class="legend-swatch bg-pending"></span>
+                                <span class="legend-count text-pending">36</span>
+                                <span class="flex-1 label text-on-ground-muted">In progress<span class="ml-2">9.0%</span></span>
+                            </button>
+                            <button aria-pressed="false" class="legend-item" data-outcome="absent" type="button">
+                                <span class="legend-swatch border border-ground-rule bg-absent"></span>
+                                <span class="legend-count text-on-ground-muted">11</span>
+                                <span class="flex-1 label text-on-ground-muted">Not executed<span class="ml-2">2.75%</span></span>
+                            </button>
+                        </div>
+
+                        <p aria-live="polite" class="mt-3 label text-on-ground-muted" id="tally-status"></p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================================
+     Hi-vis strip. The one tonal shout, and it carries the hiring message.
+     =================================================================== -->
+<section aria-label="Availability" class="mt-zone bg-hivis text-ground">
+    <div class="zone">
+        <div class="zone-inner flex flex-wrap items-center justify-between gap-x-10 gap-y-5 py-8">
+            <p class="font-display text-loud uppercase">Open to QA and quality engineering roles</p>
+            <a class="group flex shrink-0 items-center gap-3 border-2 border-ground px-5 py-3 text-label uppercase tracking-[0.07em] transition-colors hover:bg-ground hover:text-hivis" href="#sign-off">
+                Get in touch
+                <svg class="h-3 w-3 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================================
+     Findings. A white plate laid on the ground.
+     =================================================================== -->
+<section aria-labelledby="findings-title" class="zone pt-zone" id="findings">
+    <div class="zone-inner">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <h2 class="font-display text-huge uppercase" id="findings-title">Findings</h2>
+            <p class="label text-on-ground-muted">Extract from the ERM V3 defect log / 10 of 21 records</p>
+        </div>
+
+        <div class="plate mt-8 p-5 sm:p-8" data-enter="rise">
+            <div class="flex flex-wrap items-center gap-2" id="severity-filter" role="group" aria-label="Filter findings by severity">
+                <button aria-pressed="true" class="filter-chip" data-severity="all" type="button">All <span>10</span></button>
+                <button aria-pressed="false" class="filter-chip" data-severity="critical" type="button">Critical <span>3</span> <kbd>1</kbd></button>
+                <button aria-pressed="false" class="filter-chip" data-severity="high" type="button">High <span>3</span> <kbd>2</kbd></button>
+                <button aria-pressed="false" class="filter-chip" data-severity="medium" type="button">Medium <span>3</span> <kbd>3</kbd></button>
+                <button aria-pressed="false" class="filter-chip" data-severity="low" type="button">Low <span>1</span> <kbd>4</kbd></button>
+            </div>
+
+            <p aria-live="polite" class="mt-4 plate-label" id="filter-status">Showing all 10 records</p>
+
+            <div class="mt-5 overflow-x-auto">
+                <table class="record-table">
+                    <caption class="sr-only">Defects recorded during ERM V3 and CRMX testing</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Severity</th>
+                            <th scope="col">Module</th>
+                            <th scope="col">Finding</th>
+                        </tr>
+                    </thead>
+                    <tbody id="record-body">
+                        <tr class="record-row" data-severity="critical">
+                            <td><span class="sev sev-critical">Critical</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">mail-mitigation-reminder</td>
+                            <td>
+                                Reminder mail never sent. The query calls DATE_FORMAT, which is MySQL syntax, against PostgreSQL.
+                                <span class="mt-2 block plate-label">Ref ERM-CRON-001</span>
+                                <a class="mt-1 inline-flex items-center gap-1.5 border-b-2 border-hivis pb-0.5 text-label uppercase tracking-[0.07em] text-ink transition-colors hover:bg-hivis" href="docs/bug-report.html">
+                                    Full report
+                                    <svg class="h-2.5 w-2.5 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="record-row" data-severity="critical">
+                            <td><span class="sev sev-critical">Critical</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Risk Import</td>
+                            <td>Import fails for both BAU and Project modes, blocking bulk onboarding entirely.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="critical">
+                            <td><span class="sev sev-critical">Critical</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Dashboard L2</td>
+                            <td>Grouping absent from the risk mapping view, so filtered totals cannot be reconciled.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="high">
+                            <td><span class="sev sev-high">High</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Dashboard L3</td>
+                            <td>Chart fails to render. Highest defect density of any module, 50 percent.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="high">
+                            <td><span class="sev sev-high">High</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Email Notification</td>
+                            <td>Notification links point at Edit instead of Mitigation Update, sending the PIC to the wrong screen.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="high">
+                            <td><span class="sev sev-high">High</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Flagging</td>
+                            <td>Flag state is wrong when a risk carries several mitigations, so closed risks still read as open.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="medium">
+                            <td><span class="sev sev-medium">Medium</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Home</td>
+                            <td>Total counter disagrees with the Risk Register tab it summarises.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="medium">
+                            <td><span class="sev sev-medium">Medium</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Login Frequency</td>
+                            <td>Aggregate login count reported incorrectly on the usage report.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="medium">
+                            <td><span class="sev sev-medium">Medium</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Masterdata Hierarchy</td>
+                            <td>DataTables initialisation error prevents the hierarchy list from loading.</td>
+                        </tr>
+                        <tr class="record-row" data-severity="low">
+                            <td><span class="sev sev-low">Low</span></td>
+                            <td class="whitespace-nowrap font-medium text-ink">Risk Register</td>
+                            <td>Raw HTML tags rendered in the delete confirmation copy. <span class="font-medium text-verified">Fixed.</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mt-6 max-w-measure text-sm text-ink-secondary">
+                All 21 were recorded during development and staging. None reached production.
+                <a class="border-b-2 border-hivis pb-0.5 font-medium text-ink transition-colors hover:bg-hivis" href="docs/metrics.html">Full counts, pass rate and density by module</a>.
+            </p>
+        </div>
+
+        <!-- Density figure. The signal I actually watch. -->
+        <div class="plate mt-6 p-5 sm:p-8" data-enter="rise">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+                <h3 class="font-display text-loud uppercase text-ink">Defect density</h3>
+                <p class="plate-label">Defects per test case / scale 0 to 50%</p>
+            </div>
+
+            <div class="mt-7" role="table" aria-label="Defect density by module as a percentage of test cases">
+                <div class="chart-row" role="row">
+                    <span class="chart-name" role="rowheader">Dashboard L3</span>
+                    <span class="chart-bar" role="cell"><span style="width: 100%"></span></span>
+                    <span class="chart-value" role="cell">50.0%</span>
+                </div>
+                <div class="chart-row" role="row">
+                    <span class="chart-name" role="rowheader">Dashboard L2</span>
+                    <span class="chart-bar" role="cell"><span style="width: 66.6%"></span></span>
+                    <span class="chart-value" role="cell">33.3%</span>
+                </div>
+                <div class="chart-row" role="row">
+                    <span class="chart-name" role="rowheader">Masterdata Project</span>
+                    <span class="chart-bar" role="cell"><span style="width: 50%"></span></span>
+                    <span class="chart-value" role="cell">25.0%</span>
+                </div>
+                <div class="chart-row" role="row">
+                    <span class="chart-name" role="rowheader">Email Notification</span>
+                    <span class="chart-bar" role="cell"><span style="width: 8.4%"></span></span>
+                    <span class="chart-value" role="cell">4.2%</span>
+                </div>
+                <div class="chart-row" role="row">
+                    <span class="chart-name" role="rowheader">Risk Registered</span>
+                    <span class="chart-bar" role="cell"><span style="width: 5%"></span></span>
+                    <span class="chart-value" role="cell">2.5%</span>
+                </div>
+                <div class="chart-row" role="row">
+                    <span class="chart-name" role="rowheader">Home, chart</span>
+                    <span class="chart-bar" data-zero="true" role="cell"><span></span></span>
+                    <span class="chart-value text-verified" role="cell">0.0%</span>
+                </div>
+            </div>
+
+            <p class="mt-7 max-w-measure text-sm text-ink-secondary">
+                Risk Registered carries 158 test cases and 4 defects. Dashboard L3 carries 8 and 4.
+                The raw totals say the first module is the problem. Density says it is the second,
+                and density is right.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================================
+     Method
+     =================================================================== -->
+<section aria-labelledby="method-title" class="zone pt-zone" id="method">
+    <div class="zone-inner">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <h2 class="font-display text-huge uppercase" id="method-title">Method</h2>
+            <p class="label text-on-ground-muted">How the records above get made</p>
+        </div>
+
+        <div class="mt-8">
+            <div class="method-item" data-enter="slide">
+                <h3 class="font-display text-loud uppercase text-hivis">By hand,<br class="hidden lg:block"/> end to end</h3>
+                <p class="max-w-measure text-on-ground-muted">
+                    I walk every flow from authentication through to the data that comes out the far
+                    side. The findings that matter are almost never on the happy path. They are one
+                    step past where the specification stops describing what should happen.
+                </p>
+            </div>
+            <div class="method-item" data-enter="slide" style="--enter-delay: 80ms">
+                <h3 class="font-display text-loud uppercase text-hivis">Across<br class="hidden lg:block"/> environments</h3>
+                <p class="max-w-measure text-on-ground-muted">
+                    The same pass repeated on current browsers and on real mobile viewports, with
+                    DevTools open. Layout regressions and broken handlers get caught here rather
+                    than by a user who has no reason to forgive them.
+                </p>
+            </div>
+            <div class="method-item" data-enter="slide" style="--enter-delay: 160ms">
+                <h3 class="font-display text-loud uppercase text-hivis">Written<br class="hidden lg:block"/> for the fix</h3>
+                <p class="max-w-measure text-on-ground-muted">
+                    Every defect is filed with exact reproduction steps, environment, expected
+                    against actual, and the impact. The measure of a good report is that the
+                    developer opens it once and never comes back to ask a question.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================================
+     Systems. The names are the visual.
+     =================================================================== -->
+<section aria-labelledby="systems-title" class="zone pt-zone" id="systems">
+    <div class="zone-inner">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <h2 class="font-display text-huge uppercase" id="systems-title">Systems</h2>
+            <p class="label text-on-ground-muted">Six platforms / CV Gemilang Inti Teknologi</p>
+        </div>
+
+        <div class="mt-8" id="system-list">
+            <button aria-haspopup="dialog" class="system-row" data-system="erm" type="button">
+                <span class="min-w-0">
+                    <span class="system-name">ERM</span>
+                    <span class="system-note mt-2 block max-w-measure text-sm text-on-ground-muted transition-colors">Enterprise Risk Management. Risk scoring, mitigation tracking, compliance. 150+ cases.</span>
+                </span>
+                <svg class="h-5 w-5 shrink-0 fill-current text-on-ground-muted" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+            </button>
+            <button aria-haspopup="dialog" class="system-row" data-system="crm" type="button">
+                <span class="min-w-0">
+                    <span class="system-name">CRM</span>
+                    <span class="system-note mt-2 block max-w-measure text-sm text-on-ground-muted transition-colors">Customer records, role permissions, session handling, PII masking.</span>
+                </span>
+                <svg class="h-5 w-5 shrink-0 fill-current text-on-ground-muted" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+            </button>
+            <button aria-haspopup="dialog" class="system-row" data-system="dms" type="button">
+                <span class="min-w-0">
+                    <span class="system-name">DMS</span>
+                    <span class="system-note mt-2 block max-w-measure text-sm text-on-ground-muted transition-colors">Document uploads, file integrity, version control, upload edge cases.</span>
+                </span>
+                <svg class="h-5 w-5 shrink-0 fill-current text-on-ground-muted" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+            </button>
+            <button aria-haspopup="dialog" class="system-row" data-system="hris" type="button">
+                <span class="min-w-0">
+                    <span class="system-name">HRIS</span>
+                    <span class="system-note mt-2 block max-w-measure text-sm text-on-ground-muted transition-colors">Onboarding pipelines, payroll calculation, employee data privacy.</span>
+                </span>
+                <svg class="h-5 w-5 shrink-0 fill-current text-on-ground-muted" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+            </button>
+            <button aria-haspopup="dialog" class="system-row" data-system="pd" type="button">
+                <span class="min-w-0">
+                    <span class="system-name">PD</span>
+                    <span class="system-note mt-2 block max-w-measure text-sm text-on-ground-muted transition-colors">Product distribution. Logistics, inventory sync, dispatch tracking.</span>
+                </span>
+                <svg class="h-5 w-5 shrink-0 fill-current text-on-ground-muted" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+            </button>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-ground-rule py-6">
+                <span class="system-name text-on-ground-muted">CRMX</span>
+                <span class="max-w-measure text-sm text-on-ground-muted">
+                    Tested alongside ERM V3, covered by the same
+                    <a class="border-b-2 border-hivis pb-0.5 text-on-ground transition-colors hover:text-hivis" href="docs/smoke-test.html">smoke test checklist</a>.
+                </span>
+            </div>
+        </div>
+
+        <!-- Published artefacts -->
+        <div class="mt-16">
+            <p class="label border-b border-ground-rule pb-3 text-on-ground-muted">Published artefacts</p>
+            <div class="grid gap-px bg-ground-rule sm:grid-cols-2 lg:grid-cols-4">
+                <a class="group flex min-h-[9rem] flex-col justify-between bg-ground p-5 transition-colors hover:bg-hivis hover:text-ground" href="docs/bug-report.html">
+                    <span class="font-display text-2xl uppercase leading-none">Defect report</span>
+                    <span class="mt-6 flex items-end justify-between gap-3">
+                        <span class="text-sm text-on-ground-muted group-hover:text-ground">Template plus the ERM-CRON-001 write-up in full</span>
+                        <svg class="h-3.5 w-3.5 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                    </span>
+                </a>
+                <a class="group flex min-h-[9rem] flex-col justify-between bg-ground p-5 transition-colors hover:bg-hivis hover:text-ground" href="docs/test-cases.html">
+                    <span class="font-display text-2xl uppercase leading-none">Test cases</span>
+                    <span class="mt-6 flex items-end justify-between gap-3">
+                        <span class="text-sm text-on-ground-muted group-hover:text-ground">Four worked cases: positive, negative, edge</span>
+                        <svg class="h-3.5 w-3.5 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                    </span>
+                </a>
+                <a class="group flex min-h-[9rem] flex-col justify-between bg-ground p-5 transition-colors hover:bg-hivis hover:text-ground" href="docs/smoke-test.html">
+                    <span class="font-display text-2xl uppercase leading-none">Smoke test</span>
+                    <span class="mt-6 flex items-end justify-between gap-3">
+                        <span class="text-sm text-on-ground-muted group-hover:text-ground">Twelve critical path checks for ERM V3</span>
+                        <svg class="h-3.5 w-3.5 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                    </span>
+                </a>
+                <a class="group flex min-h-[9rem] flex-col justify-between bg-ground p-5 transition-colors hover:bg-hivis hover:text-ground" href="docs/metrics.html">
+                    <span class="font-display text-2xl uppercase leading-none">Metrics</span>
+                    <span class="mt-6 flex items-end justify-between gap-3">
+                        <span class="text-sm text-on-ground-muted group-hover:text-ground">400 items, 83 percent pass rate, density by module</span>
+                        <svg class="h-3.5 w-3.5 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================================
+     Instruments and record, on a plate
+     =================================================================== -->
+<section aria-labelledby="instruments-title" class="zone pt-zone" id="instruments">
+    <div class="zone-inner">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <h2 class="font-display text-huge uppercase" id="instruments-title">Instruments</h2>
+            <p class="label text-on-ground-muted">Practice, tooling, and what is on the record</p>
+        </div>
+
+        <div class="plate mt-8 p-5 sm:p-8" data-enter="rise">
+            <div class="grid gap-x-14 gap-y-10 md:grid-cols-2">
+                <div>
+                    <p class="plate-label border-b-2 border-ink pb-3">Practice</p>
+                    <dl class="ledger">
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Manual</dt>
+                            <dd class="text-sm text-ink-secondary">End to end, by hand, across six systems</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Functional</dt>
+                            <dd class="text-sm text-ink-secondary">Specification against observed behaviour</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Regression</dt>
+                            <dd class="text-sm text-ink-secondary">Re-verification after each fix cycle</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Interface</dt>
+                            <dd class="text-sm text-ink-secondary">Layout, states, responsive behaviour</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Cross-browser</dt>
+                            <dd class="text-sm text-ink-secondary">Current engines plus real mobile viewports</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">API</dt>
+                            <dd class="text-sm text-ink-secondary">Request and response validation in Postman</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div>
+                    <p class="plate-label border-b-2 border-ink pb-3">Tooling</p>
+                    <dl class="ledger">
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Jira</dt>
+                            <dd class="text-sm text-ink-secondary">Defect tracking and test documentation</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Postman</dt>
+                            <dd class="text-sm text-ink-secondary">Endpoint verification and cron triggers</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">DevTools</dt>
+                            <dd class="text-sm text-ink-secondary">Network, console, device emulation</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Sheets</dt>
+                            <dd class="text-sm text-ink-secondary">Execution logs and the metrics on this page</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">Figma</dt>
+                            <dd class="text-sm text-ink-secondary">Design against build comparison</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt class="font-medium text-ink">SQL</dt>
+                            <dd class="text-sm text-ink-secondary">Reading the data a screen claims to show</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Built rather than tested -->
+            <div class="mt-14 border-t-2 border-ink pt-8">
+                <p class="plate-label">Built, not tested</p>
+                <div class="mt-4 grid gap-x-10 gap-y-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+                    <div>
+                        <h3 class="font-display text-loud uppercase text-ink">
+                            <a class="group inline-flex items-center gap-3 transition-colors hover:text-hivis-ink" href="https://github.com/Syefdi/bugReport" rel="noopener noreferrer" target="_blank">
+                                Defect tracking system
+                                <svg class="h-5 w-5 fill-current transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                                <span class="sr-only">on GitHub, opens in a new tab</span>
+                            </a>
+                        </h3>
+                        <p class="mt-3 max-w-measure text-sm text-ink-secondary">
+                            After filing enough reports by hand I built the tool I wanted: role
+                            separation for tester and developer, file attachments, and an audit trail
+                            on every state change.
+                        </p>
+                    </div>
+                    <ul class="flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
+                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">FastAPI</li>
+                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">Python</li>
+                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">PostgreSQL</li>
+                        <li class="border border-ink/25 px-2.5 py-1 text-label uppercase tracking-[0.07em] text-ink-muted">JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Dated record -->
+            <div class="mt-14 border-t-2 border-ink pt-8">
+                <p class="plate-label">On the record</p>
+                <ol class="ledger mt-4 list-none p-0">
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-hivis-ink">2025 to now</span>
+                        <span>
+                            <span class="block font-medium text-ink">QA Tester, CV Gemilang Inti Teknologi</span>
+                            <span class="mt-2 block max-w-measure text-sm text-ink-secondary">
+                                Sole tester across six enterprise systems. Built the scenarios, ran
+                                them by hand, kept the documentation in Jira, and closed every
+                                critical finding before release.
+                            </span>
+                        </span>
+                    </li>
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-ink-muted">2026</span>
+                        <span class="flex flex-wrap items-baseline gap-x-3">
+                            <span class="text-ink">Spec-Driven Development dengan Kiro</span>
+                            <span class="text-sm text-ink-muted">Dicoding with AWS AI Academy</span>
+                            <a class="text-label uppercase tracking-[0.07em] text-hivis-ink hover:underline" href="https://dicoding.com/certificates/JMZVOJKQ3XN9" rel="noopener noreferrer" target="_blank">Verify</a>
+                        </span>
+                    </li>
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-ink-muted">2025</span>
+                        <span class="flex flex-wrap items-baseline gap-x-3">
+                            <span class="text-ink">Prompt Engineering untuk Software Developer</span>
+                            <span class="text-sm text-ink-muted">Dicoding</span>
+                            <a class="text-label uppercase tracking-[0.07em] text-hivis-ink hover:underline" href="https://dicoding.com/certificates/98XWOOW2LZM3" rel="noopener noreferrer" target="_blank">Verify</a>
+                        </span>
+                    </li>
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-ink-muted">2025</span>
+                        <span class="flex flex-wrap items-baseline gap-x-3">
+                            <span class="text-ink">Belajar Dasar Structured Query Language</span>
+                            <span class="text-sm text-ink-muted">Dicoding</span>
+                            <a class="text-label uppercase tracking-[0.07em] text-hivis-ink hover:underline" href="https://dicoding.com/certificates/81P25KO6YPOY" rel="noopener noreferrer" target="_blank">Verify</a>
+                        </span>
+                    </li>
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-ink-muted">2025</span>
+                        <span class="flex flex-wrap items-baseline gap-x-3">
+                            <span class="text-ink">Belajar Dasar Data Science</span>
+                            <span class="text-sm text-ink-muted">Dicoding with Google Developers</span>
+                            <a class="text-label uppercase tracking-[0.07em] text-hivis-ink hover:underline" href="https://dicoding.com/certificates/KEXL2MQY0ZG2" rel="noopener noreferrer" target="_blank">Verify</a>
+                        </span>
+                    </li>
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-ink-muted">2025</span>
+                        <span class="flex flex-wrap items-baseline gap-x-3">
+                            <span class="text-ink">Belajar Dasar Visualisasi Data</span>
+                            <span class="text-sm text-ink-muted">Dicoding with Google Developers</span>
+                            <a class="text-label uppercase tracking-[0.07em] text-hivis-ink hover:underline" href="https://dicoding.com/certificates/NVP7JWEKVXR0" rel="noopener noreferrer" target="_blank">Verify</a>
+                        </span>
+                    </li>
+                    <li class="ledger-row">
+                        <span class="text-label uppercase tracking-[0.07em] text-ink-muted">In progress</span>
+                        <span class="flex flex-wrap items-baseline gap-x-3">
+                            <span class="text-ink">Belajar Dasar Cloud dan Gen AI di AWS</span>
+                            <span class="text-sm text-ink-muted">Dicoding with AWS AI Academy</span>
+                        </span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===================================================================
+     Sign-off. Drenched hi-vis, so the page ends loud.
+     =================================================================== -->
+<section aria-labelledby="signoff-title" class="mt-zone bg-hivis text-ground" id="sign-off">
+    <div class="zone">
+        <div class="zone-inner py-zone">
+            <div class="grid gap-x-14 gap-y-10 lg:grid-cols-12">
+                <div class="lg:col-span-7">
+                    <h2 class="font-display text-huge uppercase" id="signoff-title">Let's talk</h2>
+                    <p class="mt-6 max-w-measure text-lead">
+                        If you need a tester who writes the record down properly, I am available now.
+                        WhatsApp is the fastest way to reach me.
+                    </p>
+
+                    <div class="mt-10">
+                        <a class="contact-row" href="https://wa.me/6282123439121?text=Hi%20Syefdi%2C%20saya%20tertarik%20dengan%20portfolio%20Anda." rel="noopener noreferrer" target="_blank">
+                            <span>
+                                <span class="block font-display text-2xl uppercase leading-none">WhatsApp</span>
+                                <span class="mt-1.5 block text-sm text-hivis-ink">+62 821-2343-9121, fastest reply</span>
+                            </span>
+                            <svg class="h-4 w-4 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </a>
+                        <a class="contact-row" href="mailto:syefdifasmawi@gmail.com">
+                            <span>
+                                <span class="block font-display text-2xl uppercase leading-none">Email</span>
+                                <span class="mt-1.5 block text-sm text-hivis-ink">syefdifasmawi@gmail.com</span>
+                            </span>
+                            <svg class="h-4 w-4 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </a>
+                        <a class="contact-row" href="https://www.linkedin.com/in/syefdi-fasmawi-syaban-6b6531337/" rel="noopener noreferrer" target="_blank">
+                            <span>
+                                <span class="block font-display text-2xl uppercase leading-none">LinkedIn</span>
+                                <span class="mt-1.5 block text-sm text-hivis-ink">syefdi-fasmawi-syaban</span>
+                            </span>
+                            <svg class="h-4 w-4 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </a>
+                        <a class="contact-row" href="https://github.com/Syefdi" rel="noopener noreferrer" target="_blank">
+                            <span>
+                                <span class="block font-display text-2xl uppercase leading-none">GitHub</span>
+                                <span class="mt-1.5 block text-sm text-hivis-ink">github.com/Syefdi</span>
+                            </span>
+                            <svg class="h-4 w-4 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </a>
+                        <a class="contact-row" href="assets/documents/resume.pdf" rel="noopener" target="_blank">
+                            <span>
+                                <span class="block font-display text-2xl uppercase leading-none">Resume</span>
+                                <span class="mt-1.5 block text-sm text-hivis-ink">PDF, opens in a new tab</span>
+                            </span>
+                            <svg class="h-4 w-4 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#icon-arrow-outward"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 lg:col-start-9">
+                    <figure>
+                        <div class="portrait aspect-[4/5] w-full max-w-sm">
+                            <img alt="Syefdi Fasmawi Syaban" decoding="async" height="714" loading="lazy" src="assets/images/SyefdiSyaban-IMG.jpg" width="834"/>
+                        </div>
+                        <figcaption class="mt-4 max-w-sm text-label uppercase tracking-[0.07em] text-hivis-ink">
+                            Syefdi Fasmawi Syaban, QA Engineer, South Jakarta
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <footer class="mt-16 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-ground/25 pt-6">
+                <p class="text-label uppercase tracking-[0.07em] text-hivis-ink">Designed and built by Syefdi Fasmawi Syaban</p>
+                <p class="text-label uppercase tracking-[0.07em] text-hivis-ink">
+                    <time datetime="2026" id="footer-year">2026</time> / no tracking, no analytics
+                </p>
+            </footer>
+        </div>
+    </div>
+</section>
+
+<!-- Contents, small viewports -->
+<dialog aria-label="Contents" class="overlay" id="contents-overlay">
+    <div class="flex min-h-full items-start justify-end p-4">
+        <nav aria-label="Sections" class="overlay-sheet w-full max-w-xs translate-y-2 opacity-0 transition duration-200" id="contents-panel">
+            <div class="flex items-center justify-between border-b-2 border-ink px-5 py-3">
+                <p class="plate-label">Contents</p>
+                <button class="text-ink-muted transition-colors hover:text-ink" data-overlay-dismiss type="button" aria-label="Close contents">
+                    <svg class="h-4 w-4 fill-current" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg>
+                </button>
+            </div>
+            <ul class="list-none p-0">
+                <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#findings">Findings</a></li>
+                <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#method">Method</a></li>
+                <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#systems">Systems</a></li>
+                <li><a class="block border-b border-plate-rule px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#instruments">Instruments</a></li>
+                <li><a class="block px-5 py-3.5 font-display text-xl uppercase leading-none text-ink" data-overlay-dismiss data-section-link href="#sign-off">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</dialog>
+
+<!-- System detail -->
+<dialog class="overlay" id="system-overlay">
+    <div class="flex min-h-full items-center justify-center p-4">
+        <div class="overlay-sheet relative max-h-[85vh] w-full max-w-2xl translate-y-2 overflow-y-auto opacity-0 transition duration-200" id="system-panel">
+            <button class="absolute right-4 top-4 z-overlay-content text-ink-muted transition-colors hover:text-ink" data-overlay-dismiss type="button" aria-label="Close detail">
+                <svg class="h-4 w-4 fill-current" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg>
+            </button>
+            <div id="system-panel-body"></div>
+        </div>
+    </div>
+</dialog>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
